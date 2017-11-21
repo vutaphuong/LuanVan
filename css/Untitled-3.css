@@ -1,0 +1,529 @@
+@charset "utf-8";
+/* CSS Document */
+
+body
+{
+	background-color: #13C9EF;
+	background-image:url(../Hinh_anh/Template-powerpoint-cong-nghe-6.jpg);
+	background-repeat: no-repeat;
+	background-size: 100%;
+	background-attachment: fixed;
+}
+#contain
+{
+	margin:0 auto;
+	width:1000px;
+	background-image:url(../Hinh_anh/bg-body.jpg);
+	clear: left;
+}
+#menuchinh
+{
+	height:200px;
+	width:950px;
+	height:170px;
+	margin-left:0 auto;
+	position:relative;
+	display:block;
+	position:relative;
+	margin:10px auto auto;
+}
+#menuchinh a
+{
+	text-decoration:none;
+	line-height:70px;	
+	text-align:center;
+	color:#FFF;
+	font-weight:bold;
+	
+	margin: 0 auto;
+	
+	}
+#MENU1
+{
+	height:70px;
+	width:120px;
+	background-color:#5F5F5F;	
+	border-radius:0px 20px 0px 20px;
+	border-color:red;
+	border-width:3px;
+	box-shadow:#C09;
+	float:left;
+	border-style:groove;
+	color:#FFF;
+	clear:right;
+	overflow:hidden;	
+	text-align:center;
+	margin: 30px auto;
+}
+.sub1
+{
+	height:70px;
+	width:120px;
+	background-color:#5F5F5F;	
+	border-radius:20px 20px 20px 20px;
+	border-color:red;
+	border-width:3px;
+	border-style:groove;
+	color:#FFF;
+	line-height:2px;
+}
+#MENU1 a
+{		
+	line-height:70px;
+	margin-left:5px;
+}
+.sub1:hover
+{
+	color:#0F0;	
+	background:#C39;
+	border-color:#FF0;
+	border-radius:20px 20px 20px 20px;
+	border-width:3px;
+	border-style:groove;
+}
+#MENU1 a:hover
+{	
+	color:#063
+	
+}
+#MENU1:hover
+{	
+	overflow:visible;
+	
+}
+#MENU1 a:hover
+{	
+	color:#063;
+	
+}
+#menu2 a:hover
+{	
+	color:#063;
+	
+}
+#menu3 a:hover
+{	
+	color:#063;
+	
+}
+#menu4 a:hover
+{	
+	color:#063;
+	
+}
+#menu5 a:hover
+{	
+	color:#063;
+	
+}
+
+#menu2
+{
+	height:100px;
+	width:150px;
+	background-color:#3C3C3C;	
+	border-radius:0px 20px 0px 20px;
+	border-color:blue;
+	color:#FFF;
+	border-width:3px;
+	border-style:groove;
+	display:block;
+	margin:20px 30px;
+	float:left;
+	overflow:hidden;
+	text-align:center;
+}
+.sub2
+{
+	height:100px;
+	width:150px;
+	background-color:#3C3C3C;	
+	border-radius:20px 20px 20px 20px;
+	border-color:blue;
+	color:#FFF;
+	border-width:3px;
+	border-style:groove;
+	display:block;
+}
+#menu2 a
+{		
+	line-height:100px;
+	margin-left:5px;
+}
+.sub2:hover
+{
+	color:#0F0;	
+	background:#C39;
+	border-color:#FF0;
+	border-radius:20px 20px 20px 20px;
+	border-width:3px;
+	border-style:groove;
+}
+#menu2:hover
+{	
+	overflow:visible;	
+	
+}
+#menu3
+{
+	height:120px;
+	width:160px;
+	background-color: black;	
+	border-radius:20px 20px 20px 20px;
+	border-color:#0F0;
+	color:#FFF;
+	border-width:3px;
+	border-style:groove;
+	display:block;
+	float:left;
+	margin:10px 20px;
+	overflow:hidden;
+	text-align:center;
+	
+}
+.sub3
+{
+	height:120px;
+	width:160px;
+	background-color:#3C3C3C;	
+	border-radius:20px 20px 20px 20px;
+	border-color:#0F6;
+	color:#FFF;
+	border-width:3px;
+	border-style:groove;
+	display:block;;
+	
+}
+#menu3 a
+{		
+	line-height:120px;
+	margin-left:5px;
+}
+.sub3:hover
+{
+	color:#0F0;	
+	background:#C39;
+	border-color:#FF0;
+	border-radius:20px 20px 20px 20px;
+	border-width:3px;
+	border-style:groove;
+}
+#menu3:hover
+{	
+	overflow:visible;
+	
+}
+#menu4
+{
+	height:100px;
+	width:150px;
+	background-color:#3C3C3C;	
+	border-radius:20px 0px 20px 0px;
+	border-color:blue;
+	color:#FFF;
+	border-width:3px;
+	border-style:groove;
+	display:block;
+	float:left;
+	margin:20px 20px;
+	text-align:center;
+	overflow:hidden;
+}
+.sub4
+{
+	height:100px;
+	width:150px;
+	background-color:#3C3C3C;	
+	border-radius:20px 20px 20px 20px;
+	border-color:blue;
+	color:#FFF;
+	border-width:3px;
+	border-style:groove;
+	display:block;
+}
+#menu4 a
+{		
+	line-height:100px;
+	margin-left:5px;
+}
+.sub4:hover
+{
+	color:#0F0;	
+	background:#C39;
+	border-color:#FF0;
+	border-radius:20px 20px 20px 20px;
+	border-width:3px;
+	border-style:groove;
+}
+#menu4:hover
+{	
+	overflow:visible;	
+	
+}
+#menu5
+{
+	height:70px;
+	width:120px;
+	background-color: #5F5F5F;	
+	border-radius:20px 0px 20px 0px;
+	border-color:red;
+	color:#FFF;
+	border-width:3px;
+	border-style:groove;
+	display:block;
+	float:left;
+	margin:30px 20px;
+	overflow:hidden;
+	text-align:center;
+}
+.sub5
+{
+	height:70px;
+	width:120px;
+	background-color:#3C3C3C;	
+	border-radius:20px 20px 20px 20px;
+	border-color:red;
+	color:#FFF;
+	border-width:3px;
+	border-style:groove;
+	display:block;
+}
+#menu5 a
+{		
+	line-height:70px;
+	margin-left:5px;
+}
+.sub5:hover
+{
+	color:#0F0;	
+	background:#C39;
+	border-color:#FF0;
+	border-radius:20px 20px 20px 20px;
+	border-width:3px;
+	border-style:groove;
+}
+#menu5:hover
+{	
+	overflow:visible;	
+	
+}
+
+#iocn
+{
+	width:40px;
+	height:40px;	
+}
+#thanWeb
+{
+	line-height:50px;
+	margin: 0 auto ;
+	height:auto;
+	width:950px;
+}
+.tinchinh
+{
+	width:950px;
+	height:450px;
+}
+
+#chanWeb  
+{
+		
+	height:30px;
+	width:950px;
+	margin:0 auto;
+    text-align: center;
+    width: 900px;
+    position: relative;
+   	clear:both;
+	border:none;
+	
+}
+
+@keyframes myAnimation {
+    from {left: 0px;}
+    to {left: 400px;}
+}
+
+/* Hien thi cho Firefox */
+@-moz-keyframes myAnimation {
+    from {left: 0px;}
+    to {left: 400px;}
+}
+
+/* Hien thi cho Safari and Chrome */
+@-webkit-keyframes myAnimation {
+    from {left: 0px;}
+    to {left: 400px;}
+}
+
+/* Hien thi cho Opera */
+@-o-keyframes myAnimation {
+    from {left: 0px;}
+    to {left: 400px;}
+}
+
+.khung
+{
+	
+	width:800px;
+	height:300px;
+	margin-left:20px;
+}
+.hinh
+{
+	height:220px;
+	width:300px;
+	float:left;
+	margin-top:50px;
+	margin-left:40px;
+	margin-bottom:30px;
+	border:solid;
+}
+
+.thenut ul
+{
+	list-style-type: none;
+}
+.thenut li
+{
+	float: left;
+}
+#nutchuyen
+{
+	background-color: rgba(226,18,239,1);
+	text-decoration: none;
+	color: rgba(255,255,255,1.00);
+	font-family: "alex-brush";
+	border-radius: 7px 50px;
+	float: left;
+	margin-left: 35px;
+  width: 200px;
+  height: 50px;
+  text-align: center;
+  border-style: groove;
+}
+#admintrai
+{
+	width: 200px;
+	height: auto;
+	margin-left: 2px;
+	background-color: rgba(30,215,212,0.82);border-radius: 10px;
+	
+	
+}
+.nutadmintrai
+{
+	background-color: rgba(226,18,239,1);
+	text-decoration: none;
+	color: rgba(255,255,255,1.00);
+	border-radius: 7px 30px;
+	margin-left: 2px;
+	width: 190px;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	border-style: groove;
+}
+.input:focus
+{
+	outline: none !important;
+}
+.input
+{
+	border-radius: 7px !important; 
+	margin: 8px 0px !important; 
+	padding: 10px 20px  ; 
+	background: rgba(255, 255, 255, 1) !important; 
+	color: rgba(237,0,229,1.00) !important; 
+}
+.sbm
+{
+	border-radius: 7px;
+	margin: 8px auto ;
+	width: 215px;
+	height: 40px;
+	color: rgba(90,95,64,1.00);
+	font-weight: bold;
+	background:rgba(10,65,241,0.2);
+}
+.sbm:focus
+{
+	outline: none;
+}
+table tr:first-child
+{
+	animation: chuyendong 1s ease-out 0s 1 normal;
+}
+@keyframes chuyendong
+{
+	 from{ transform: translateX(-200px); opacity: 0;  } 
+	 to { transform: translateX(0px); opacity: 1;  }
+}
+table tr:nth-child(2)
+{
+	animation: chuyendong2 1s ease-out 0s 1 normal;
+}
+@keyframes chuyendong2
+{
+	 from{ transform: translateX(-200px); opacity: 0;  } 
+	 to { transform: translateX(0px); opacity: 1;  }
+}
+table tr:nth-child(3)
+{
+	animation: chuyendong3 1s ease-out 0s 1 normal;
+}
+@keyframes chuyendong3
+{
+	 from{ transform: translateX(200px); opacity: 0;  } 
+	 to { transform: translateX(0px); opacity: 1;  }
+}
+table tr:nth-child(5)
+{
+	animation: chuyendong5 1s ease-out 0s 1 normal;
+}
+@keyframes chuyendong5
+{
+	 from{ transform: translateX(-200px); opacity: 0;  } 
+	 to { transform: translateX(0px); opacity: 1;  }
+}
+table tr:nth-child(4)
+{
+	animation: chuyendong1 1s ease-out 0s 1 normal;
+}
+@keyframes chuyendong1
+{
+	 from{ transform: translateX(200px); opacity: 0;  } 
+	 to { transform: translateX(0px); opacity: 1;  }
+}
+table tr:last-child
+{
+	animation: chuyendong6 1s ease-out 0s 1 normal;
+}
+@keyframes chuyendong6
+{
+	 from{ transform: translateX(200px); opacity: 0;  } 
+	 to { transform: translateX(0px); opacity: 1;  }
+}
+.labelip
+{
+	text-align: center;
+	line-height: 10px;
+	color: rgba(64,64,64,1.00);
+}
+#dangnhap
+{
+	background: -webkit-linear-gradient(top left, red, green);
+	position: fixed;
+	top: 150px;
+	left: 0;
+	transform: rotate(90deg);
+	border: rgba(28,200,187,0.62);
+	border-radius: 5px;
+	border-style: ridge;
+}
+#dangnhap a
+{
+	text-decoration: none;
+	color: rgba(255,255,255,1.00);
+}
