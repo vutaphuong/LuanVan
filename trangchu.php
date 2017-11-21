@@ -5,18 +5,11 @@ if (!isset($_SESSION))
     session_start();
   }
 
-if (isset($_SESSION['tenuser'])) {
+if (!isset($_SESSION['tenuser'])) {
   
-  $tennd=$_SESSION['tenuser'];
-}
-else
-{  
-  header('Location: index.php');
+ header('Location: index.php');
 }
 ?>
-
-
-
 <!doctype html>
 <html>
 <head><meta http-equiv="content-type" content="text/html;charset=utf-8"/>
@@ -26,7 +19,6 @@ else
      <link href="css/magic.css" rel="stylesheet">
      <link href="css/logoheader.css" rel="stylesheet">
      <link href="css/dinhdangnut.css" rel="stylesheet">
-     <link href="css/nutdangnhap.css" rel="stylesheet">
      <!--<link href="css/Untitled-3.css" rel="stylesheet">-->
 
 <script language=JavaScript>
@@ -61,12 +53,10 @@ else
     <li class="hvr-sweep-to-right hvr-ripple-out"><a>Quy định ĐKMH</a></li>
     <li class="hvr-sweep-to-right hvr-ripple-out"><a>Đăng ký môn học</a></li>
     <li class="hvr-sweep-to-right hvr-ripple-out"><a>Thông báo học phí</a></li>
-    <li class="hvr-sweep-to-right hvr-ripple-out"><a>Xem thông tin</a></li>
+    <li class="hvr-sweep-to-right hvr-ripple-out"><a href="thongtin.php">Thông tin cá nhân</a></li>
     </ul>
     </div>
-    <div id="noidung">
-    
-    <p align="center" style="color: red;font-weight: bold;font-size: 20px;">Chào anh <?php echo $tennd;?> nhé :)</p>
+    <div id="noidung">    
     <iframe src="https://drive.google.com/file/d/1TU6l5faustXDL5Vt6BvOdMl7zhWXPCNz/preview" width="900" height="700"></iframe>
     </div>
     </div>    

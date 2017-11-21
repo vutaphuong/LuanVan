@@ -68,7 +68,7 @@ catch(Exception $e)
             {
                 $_SESSION['tenuser']=$_POST["tendn"];
                 //print_r($_SESSION); exit();
-                header('Location: dangnhap.php');
+                header('Location: trangchu.php');
             }
 
                 $valueten=$_POST['tendn'];

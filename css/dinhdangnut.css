@@ -24,7 +24,7 @@ ul
 	text-decoration:none;
 	list-style-type:none;
 }
-ul li
+ul li 
 {
 	line-height:17px;
 	border-color:#0F3;
@@ -36,6 +36,11 @@ ul li
 	padding-top:10px;
 	padding-left:20PX;
 }
+li a
+{	
+	text-decoration: none;
+	color: inherit;
+}
 #noidung
 {	
 	float:left;	margin:110px;
@@ -43,7 +48,7 @@ ul li
 }
 #footer
 {
-	margin-bottom:0px;
+	margin-bottom:-10px;
 	margin-left:-10px;
 	margin-right:0px;
 	background-color:rgba(0,227,227,1);

@@ -1,16 +1,16 @@
-
 <?php
-session_start();
-//tiến hành kiểm tra là người dùng đã đăng nhập hay chưa
-//nếu chưa, chuyển hướng người dùng ra lại trang đăng nhập
+if (!isset($_SESSION)) 
+  {
+    session_start();
+  }
+
 if (isset($_SESSION['tenuser'])) {
   
   $tennd=$_SESSION['tenuser'];
 }
 else
-{
-  $tennd='Không có';  
-  // header('Location: index.php');
+{  
+  header('Location: index.php');
 }
 define("HOST", "localhost");
 define("DB_NAME", "dkmhonline");
@@ -74,62 +74,93 @@ catch(Exception $e)
     <li class="hvr-sweep-to-right hvr-ripple-out"><a>Quy định ĐKMH</a></li>
     <li class="hvr-sweep-to-right hvr-ripple-out"><a>Đăng ký môn học</a></li>
     <li class="hvr-sweep-to-right hvr-ripple-out"><a>Thông báo học phí</a></li>
-    <li class="hvr-sweep-to-right hvr-ripple-out"><a>Xem thông tin</a></li>
+    <li class="hvr-sweep-to-right hvr-ripple-out"><a href="thongtin.php">Thông tin cá nhân</a></li>
     </ul>
     </div>
     <div id="noidung">
       <?php
         # code...
-            $sqlhoten="SELECT hoten FROM `thongtinsv` WHERE MSSV='$tennd'";        
+            $sqlhoten="SELECT hoten FROM `thongtinsv`";
+            $sqlhoten."WHERE MSSV='$tennd'";;        
             $datahoten = $obj->prepare($sqlhoten);
             $datahoten->execute();
-            $sqlgt="SELECT gt FROM `thongtinsv` WHERE MSSV='$tennd'";        
+            $manghoten=$datahoten->fetch(PDO::FETCH_ASSOC);
+            $hoten=$manghoten['hoten'];
+
+
+            $sqlgt="SELECT gt FROM `thongtinsv`";
+            $sqlgt."WHERE MSSV='$tennd'";        
             $datagt = $obj->prepare($sqlgt);
             $datagt->execute();
-            $sqlquequan="SELECT quequan FROM `thongtinsv` WHERE MSSV='$tennd'";        
+            $manggt=$datagt->fetch(PDO::FETCH_ASSOC);
+            $gt=$manggt['gt'];
+
+            $sqlquequan="SELECT quequan FROM `thongtinsv`";
+            $sqlquequan."WHERE MSSV='$tennd'";        
             $dataquequan = $obj->prepare($sqlquequan);
             $dataquequan->execute();
-            $sqlnoio="SELECT noio FROM `thongtinsv` WHERE MSSV='$tennd'";        
+            $mangquequan=$dataquequan->fetch(PDO::FETCH_ASSOC);
+            $quequan=$mangquequan['quequan'];
+
+            $sqlnoio="SELECT noio FROM `thongtinsv`";
+            $sqlnoio."WHERE MSSV='$tennd'";        
             $datanoio = $obj->prepare($sqlnoio);
             $datanoio->execute();
-        if (isset($_POST['submit'])) {
-          # code...
-          if (isset($_POST['email'])) {
-            # code...
-            $valueemail=$_POST['email'];
-            $loiemail='';
-          }
-          else
-          {
-            $valueemail='';
-            $loiemail='Email không được bỏ trống'
-          }
-        }
-        else
-        {
-            $baoloi='';
-            $valueten='';
-            $baoloiten='';
-            $baoloipw='';
-        }
+            $mangnoio=$datanoio->fetch(PDO::FETCH_ASSOC);
+            $noio=$mangnoio['noio'];
+
+            $sqlsothich="SELECT sothich FROM `thongtinsv`";
+            $sqlsothich."WHERE MSSV='$tennd'";        
+            $datasothich = $obj->prepare($sqlsothich);
+            $datasothich->execute();
+            $mangst=$datasothich->fetch(PDO::FETCH_ASSOC);
+            $st=$mangst['sothich'];
+
+            $sqlavt="SELECT avt FROM `thongtinsv`";
+            $sqlavt."WHERE MSSV='$tennd'";        
+            $dataavt = $obj->prepare($sqlavt);
+            $dataavt->execute();;
+            $mangavt=$dataavt->fetch(PDO::FETCH_ASSOC);
+            $avt=$mangavt['avt'];
+
+
+            $sqlemail="SELECT email FROM `thongtinsv`";
+            $sqlemail."WHERE MSSV='$tennd'";        
+            $dataemail = $obj->prepare($sqlemail);
+            $dataemail->execute();
+            $mangemail=$dataemail->fetch(PDO::FETCH_ASSOC);
+            $email=$mangemail['email'];
+
+            $sqlsdt="SELECT sdt FROM `thongtinsv`";
+            $sqlsdt."WHERE MSSV='$tennd'";        
+            $datasdt = $obj->prepare($sqlsdt);
+            $datasdt->execute();
+            $mangsdt=$datasdt->fetch(PDO::FETCH_ASSOC);
+            $sdt=$mangsdt['sdt'];
+            if ($avt=='' && $gt=="Nam") {
+              # code...
+                $avatar='image/nam.png';
+            }
+            else
+            {
+                $avatar='image/nu.jpg';
+            }
+
     ?>
-    <table align="center" style="color:red;font-size:24px;font-weight:bold;"><tr><td><?php echo $tennd; ?></td></tr></table>
-    <form action="thongtin.php" method="post">
-                <tr ><td class="">Tên đăng nhập: </td><td><?php echo $tennd;?></td></tr> 
-                <tr ><td class="">Họ và tên: </td><td><?php echo $datahoten;?></td></tr>
-                <tr ><td class="">Giới tính: </td><td><?php echo $datagt;?></td></tr> 
-                <tr ><td class="">Quê quán</td><td><?php echo $dataquequan;?></td></tr> 
-                <tr ><td class="">Nơi ở hiện tại</td><td><?php echo $datanoio;?></td></tr>
-
-
-                <tr><td>Email: </td><td><input type="text" name="email" value="<?php echo $valueemail;?>"></td></tr>  
-                <tr><td>Số điện thoại: </td><td><input type="number" name="sdt"></td></tr>  
-                <tr><td>Email: </td><td><input type="text" name="hoten"></td></tr>
-                <tr><td>Sở thích</td><td><textarea name="sothich"></textarea></td></tr>
-                <tr><td colspan="2" align="right"><input type="submit" name="submit" value="Lưu lại"></td></tr>
-            </form>
-    </div>
-    </div>    
+    <table align="center" style="font-size:14px">
+                <tr><td colspan="2"><div class="khungavt"><img src="<?php echo $avatar;?>"></div></td></tr>
+                <tr ><td class="">Tên đăng nhập: </td><td style="font-weight: bold;"><?php echo $tennd;?></td></tr> 
+                <tr ><td class="">Họ và tên: </td><td style="font-weight: bold;"><?php echo $hoten;?></td></tr>
+                <tr ><td class="">Giới tính: </td><td style="font-weight: bold;"><?php echo $gt;?></td></tr> 
+                <tr ><td class="">Quê quán</td><td style="font-weight: bold;"><?php echo $quequan;?></td></tr> 
+                <tr ><td class="">Nơi ở hiện tại</td><td style="font-weight: bold;"><?php echo $noio;?></td></tr>
+                <tr ><td class="">Sở thích: </td><td style="font-weight: bold;"><?php echo $st;?></td></tr> 
+                <tr ><td class="">Email: </td><td style="font-weight: bold;"><?php echo $email;?></td></tr> 
+                <tr ><td class="">Số điện thoại: </td><td style="font-weight: bold;">0<?php echo $sdt?></td></tr> 
+                <tr><td colspan="2" ><a href="#" >Chỉnh sửa</a></td></tr>
+              </table>
+            </div>
+    </div>            
   </div>
   <!--Chân web -->
   <div id="footer">
