@@ -5,7 +5,7 @@ if (!isset($_SESSION))
     session_start();
   }
 
-if (!isset($_SESSION['tenuser'])) {
+if (!isset($_SESSION['user'])) {
   
  header('Location: index.php');
 }
@@ -49,6 +49,7 @@ if (!isset($_SESSION['tenuser'])) {
     <div id="thanweb">
     <div id="menutrai">
     <ul>
+    <li class="hvr-sweep-to-right hvr-ripple-out"><a>Trang chủ</a></li>
     <li class="hvr-sweep-to-right hvr-ripple-out"><a>Thông báo ĐKMH</a></li>
     <li class="hvr-sweep-to-right hvr-ripple-out"><a>Quy định ĐKMH</a></li>
     <li class="hvr-sweep-to-right hvr-ripple-out"><a>Đăng ký môn học</a></li>

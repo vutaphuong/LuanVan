@@ -1,22 +1,9 @@
 <?php
-define("HOST", "localhost");
-define("DB_NAME", "dkmhonline");
-define("DB_USER", "root");
-define("DB_PASS", "");
-define('ROOT', dirname(dirname(__FILE__)));
-if (!isset($_SESSION)) session_start();
-define("BASE_URL","http://localhost/tao%20lao/");
-$obj = null;
-try{
-    $dsn="mysql:localhost=".HOST."; dbname=".DB_NAME;
-    //$dns ="mysql:host=" . $this->host."; dbname=". $this->database;
-    $obj = new PDO($dsn, DB_USER, DB_PASS);
-    $obj->query("set names 'utf8' ");
-    }
-catch(Exception $e)
-{
-    echo $e->getMessage();  exit;
-}
+if (!isset($_SESSION)) 
+  {
+    session_start();
+  }
+include 'config/config.php';
 ?>
 <!doctype html>
 <html>
@@ -56,19 +43,46 @@ catch(Exception $e)
             
             $m = $_POST["tendn"];  
             $t = $_POST["password"];
-            $sql="SELECT * FROM `usersv` WHERE MSSV='$m' and pass='$t'";        
-            $stm = $obj->prepare($sql);
-            $stm->execute();
-            $num_rows=$stm->rowCount();
-            if ($num_rows==0) {
+            $sqlsv="SELECT mssv,pass FROM sinhvien WHERE mssv='$m' and pass='$t'";        
+            $stmsv = $obj->prepare($sqlsv);
+            $stmsv->execute();
+            $num_rowssv=$stmsv->rowCount();
+
+
+             $sqlgv="SELECT magv,pass FROM giangvien WHERE magv='$m' and pass='$t'";        
+            $stmgv = $obj->prepare($sqlgv);
+            $stmgv->execute();
+            $num_rowsgv=$stmgv->rowCount();
+
+             $sqlnv="SELECT manv,pass FROM nhanvien WHERE manv='$m' and pass='$t'";        
+            $stmnv = $obj->prepare($sqlnv);
+            $stmnv->execute();
+            $num_rowsnv=$stmnv->rowCount();
+
+            if ($num_rowssv!=0 )
+            {
                # code...
-                $baoloi='Tên đăng nhập hoặc mật khẩu không đúng';
+                $_SESSION['user']=$_POST["tendn"];
+                //print_r($_SESSION); exit();
+                header('Location: trangchu.php');                
+            }
+            elseif ($num_rowsnv!=0) 
+            {
+               # code...
+                $_SESSION['user']=$_POST["tendn"];
+                //print_r($_SESSION); exit();
+                header('Location: quanlythongtin.php');                
+            }
+            elseif ($num_rowsgv!=0) 
+            {
+               # code...
+                $_SESSION['user']=$_POST["tendn"];
+                //print_r($_SESSION); exit();
+                header('Location: xemlichday.php');                
             }
             else
             {
-                $_SESSION['tenuser']=$_POST["tendn"];
-                //print_r($_SESSION); exit();
-                header('Location: trangchu.php');
+                $baoloi='Tên đăng nhập hoặc mật khẩu không đúng';
             }
 
                 $valueten=$_POST['tendn'];
@@ -77,7 +91,8 @@ catch(Exception $e)
                 # code...
                 $baoloiten='Tên đăng nhập không được bỏ trống';
             }
-            elseif (strlen(trim($_POST['tendn'],' '))<8) {
+            elseif (strlen(trim($_POST['tendn'],' '))<8) 
+            {
                 # code...
                 $baoloiten='Tên đăng nhập phải lớn hơn 8 ký tự, không bao gồm khoảng trắng ở đầu và cuối';
             }
@@ -85,8 +100,8 @@ catch(Exception $e)
             {
                 $baoloiten='';
             }
-             if ($_POST['password']=='') 
-             {
+            if ($_POST['password']=='') 
+            {
                 # code...
                 $baoloipw='Bạn chưa điền mật khẩu';
             }

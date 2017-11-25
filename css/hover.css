@@ -1276,10 +1276,11 @@
   transition-timing-function: ease-out;
 	
 	border-radius: 7px;
-	background: -webkit-linear-gradient(135deg, red,yellow,white);
+	background: -webkit-linear-gradient(135deg, red,yellow,#99FFFF);
+  color: #18A841;
 }
 .hvr-sweep-to-right:hover, .hvr-sweep-to-right:focus, .hvr-sweep-to-right:active {
-  color: white;
+  color: #18A841;
 }
 .hvr-sweep-to-right:hover:before, .hvr-sweep-to-right:focus:before, .hvr-sweep-to-right:active:before {
   -webkit-transform: scaleX(1);
