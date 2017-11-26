@@ -1,0 +1,478 @@
+@charset "utf-8";
+/* CSS Document */
+
+body
+{
+	background-image: url(../image/aa.jpg);
+	background-repeat: no-repeat;
+	
+	background-position: center;
+	background-color: #13C9EF;
+	margin: 0 auto;
+	
+	background-attachment: fixed;
+}
+#contain
+{
+	margin:0 auto;
+	width:1000px;
+	background-image:url(../Hinh_anh/bg-body.jpg);
+	clear:left;
+}
+#menuchinh
+{
+	height:200px;
+	width:950px;
+	height:170px;
+	margin-left:0 auto;
+	position:relative;
+	display:block;
+	position:relative;
+	margin:10px auto auto;
+}
+#menuchinh a
+{
+	text-decoration:none;
+	line-height:70px;	
+	text-align:center;
+	color:#FFF;
+	font-weight:bold;
+	
+	margin: 0 auto;
+	
+	}
+#MENU1
+{
+	height:70px;
+	width:120px;
+	background-color:#5F5F5F;	
+	border-radius:0px 20px 0px 20px;
+	border-color:red;
+	border-width:3px;
+	box-shadow:#C09;
+	float:left;
+	border-style:groove;
+	color:#FFF;
+	clear:right;
+	overflow:hidden;	
+	text-align:center;
+	margin: 30px auto;
+}
+.sub1
+{
+	height:70px;
+	width:120px;
+	background-color:#5F5F5F;	
+	border-radius:20px 20px 20px 20px;
+	border-color:red;
+	border-width:3px;
+	border-style:groove;
+	color:#FFF;
+	line-height:2px;
+}
+#MENU1 a
+{		
+	line-height:70px;
+	margin-left:5px;
+}
+.sub1:hover
+{
+	color:#0F0;	
+	background:#C39;
+	border-color:#FF0;
+	border-radius:20px 20px 20px 20px;
+	border-width:3px;
+	border-style:groove;
+}
+#MENU1 a:hover
+{	
+	color:#063
+	
+}
+#MENU1:hover
+{	
+	overflow:visible;
+	
+}
+#MENU1 a:hover
+{	
+	color:#063;
+	
+}
+#menu2 a:hover
+{	
+	color:#063;
+	
+}
+#menu3 a:hover
+{	
+	color:#063;
+	
+}
+#menu4 a:hover
+{	
+	color:#063;
+	
+}
+#menu5 a:hover
+{	
+	color:#063;
+	
+}
+
+#menu2
+{
+	height:100px;
+	width:150px;
+	background-color:#3C3C3C;	
+	border-radius:0px 20px 0px 20px;
+	border-color:blue;
+	color:#FFF;
+	border-width:3px;
+	border-style:groove;
+	display:block;
+	margin:20px 30px;
+	float:left;
+	overflow:hidden;
+	text-align:center;
+}
+.sub2
+{
+	height:100px;
+	width:150px;
+	background-color:#3C3C3C;	
+	border-radius:20px 20px 20px 20px;
+	border-color:blue;
+	color:#FFF;
+	border-width:3px;
+	border-style:groove;
+	display:block;
+}
+#menu2 a
+{		
+	line-height:100px;
+	margin-left:5px;
+}
+.sub2:hover
+{
+	color:#0F0;	
+	background:#C39;
+	border-color:#FF0;
+	border-radius:20px 20px 20px 20px;
+	border-width:3px;
+	border-style:groove;
+}
+#menu2:hover
+{	
+	overflow:visible;	
+	
+}
+#menu3
+{
+	height:120px;
+	width:160px;
+	background-color: black;	
+	border-radius:20px 20px 20px 20px;
+	border-color:#0F0;
+	color:#FFF;
+	border-width:3px;
+	border-style:groove;
+	display:block;
+	float:left;
+	margin:10px 20px;
+	overflow:hidden;
+	text-align:center;
+	
+}
+.sub3
+{
+	height:120px;
+	width:160px;
+	background-color:#3C3C3C;	
+	border-radius:20px 20px 20px 20px;
+	border-color:#0F6;
+	color:#FFF;
+	border-width:3px;
+	border-style:groove;
+	display:block;;
+	
+}
+#menu3 a
+{		
+	line-height:120px;
+	margin-left:5px;
+}
+.sub3:hover
+{
+	color:#0F0;	
+	background:#C39;
+	border-color:#FF0;
+	border-radius:20px 20px 20px 20px;
+	border-width:3px;
+	border-style:groove;
+}
+#menu3:hover
+{	
+	overflow:visible;
+	
+}
+#menu4
+{
+	height:100px;
+	width:150px;
+	background-color:#3C3C3C;	
+	border-radius:20px 0px 20px 0px;
+	border-color:blue;
+	color:#FFF;
+	border-width:3px;
+	border-style:groove;
+	display:block;
+	float:left;
+	margin:20px 20px;
+	text-align:center;
+	overflow:hidden;
+}
+.sub4
+{
+	height:100px;
+	width:150px;
+	background-color:#3C3C3C;	
+	border-radius:20px 20px 20px 20px;
+	border-color:blue;
+	color:#FFF;
+	border-width:3px;
+	border-style:groove;
+	display:block;
+}
+#menu4 a
+{		
+	line-height:100px;
+	margin-left:5px;
+}
+.sub4:hover
+{
+	color:#0F0;	
+	background:#C39;
+	border-color:#FF0;
+	border-radius:20px 20px 20px 20px;
+	border-width:3px;
+	border-style:groove;
+}
+#menu4:hover
+{	
+	overflow:visible;	
+	
+}
+#menu5
+{
+	height:70px;
+	width:120px;
+	background-color: #5F5F5F;	
+	border-radius:20px 0px 20px 0px;
+	border-color:red;
+	color:#FFF;
+	border-width:3px;
+	border-style:groove;
+	display:block;
+	float:left;
+	margin:30px 20px;
+	overflow:hidden;
+	text-align:center;
+}
+.sub5
+{
+	height:70px;
+	width:120px;
+	background-color:#3C3C3C;	
+	border-radius:20px 20px 20px 20px;
+	border-color:red;
+	color:#FFF;
+	border-width:3px;
+	border-style:groove;
+	display:block;
+}
+#menu5 a
+{		
+	line-height:70px;
+	margin-left:5px;
+}
+.sub5:hover
+{
+	color:#0F0;	
+	background:#C39;
+	border-color:#FF0;
+	border-radius:20px 20px 20px 20px;
+	border-width:3px;
+	border-style:groove;
+}
+#menu5:hover
+{	
+	overflow:visible;	
+	
+}
+
+#iocn
+{
+	width:40px;
+	height:40px;	
+}
+#thanWeb
+{
+	
+	line-height:50px;
+	clear:both;
+	margin: 0 auto;
+	height:200px;
+	width:950px;
+	
+	
+}
+.tinchinh
+{
+	width:950px;
+	height:450px;
+}
+.tieudechinh
+{
+	margin:10px 75px;
+	width:800px;
+	height:40px;
+	text-align:center;
+	color:#FFF;
+	font-weight:bold;
+	font-size:36px;
+	border-width:5px;
+	border-radius:30px;
+	border-color:#0F0;
+	border-style:double;
+	background:#093;
+}
+.tieudechinh:hover
+{
+	background:#6CF;
+	color:#090;	
+	border-color:#F00;
+}
+.tieudetin
+{
+	text-align:center;
+	font-size:24px;
+	font-weight:bold;
+}
+.tieudetin a
+{
+	text-decoration:none;	
+	color:#F90;
+}
+.tieudetin a:hover
+{
+	color:#060	
+}
+#tieudephu
+{
+	margin:10px 5px;
+	width:930px;
+	height:30px;
+	text-align:center;
+	color:#FFF;
+	font-weight:bold;
+	font-size:24px;
+	border-width:5px;
+	border-radius:30px;
+	border-color:#0F0;
+	border-style:double;
+	background:#093;
+}
+#tieudephu:hover
+{
+	background:#6CF;
+	color:#090;	
+	border-color:#F00;
+}
+#tinphu
+{
+	height:250px;
+	float:left;
+}
+
+.tinnho
+{
+	width:310px;
+	float:left;
+	margin-left:5px;
+}
+.tieudephunho
+{
+	text-align:center;
+	font-weight:bold;
+	color:#6FC;
+		
+}
+.tieudephunho a:hover
+{
+	color:#060	
+}
+.tieudephunho	a
+{
+	text-decoration:none;	
+	color:#F90;
+}
+#chanWeb  
+{
+		
+	height:30px;
+	width:950px;
+	margin:0 auto;
+    text-align: center;
+    width: 900px;
+    position: relative;
+   	clear:both;
+	border:none;
+	
+}
+
+@keyframes myAnimation {
+    from {left: 0px;}
+    to {left: 400px;}
+}
+
+/* Hien thi cho Firefox */
+@-moz-keyframes myAnimation {
+    from {left: 0px;}
+    to {left: 400px;}
+}
+
+/* Hien thi cho Safari and Chrome */
+@-webkit-keyframes myAnimation {
+    from {left: 0px;}
+    to {left: 400px;}
+}
+
+/* Hien thi cho Opera */
+@-o-keyframes myAnimation {
+    from {left: 0px;}
+    to {left: 400px;}
+}
+
+.khung
+{
+	
+	width:800px;
+	height:300px;
+	margin-left:20px;
+}
+.hinh
+{
+	height:220px;
+	width:300px;
+	float:left;
+	margin-top:50px;
+	margin-left:40px;
+	margin-bottom:30px;
+	border:solid;
+}
+table
+{
+	margin:  15px 30px;
+	float: left;
+}
