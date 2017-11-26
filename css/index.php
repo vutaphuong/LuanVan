@@ -3,8 +3,7 @@ if (!isset($_SESSION))
   {
     session_start();
   }
-
-include 'config/select.php';
+include 'config/config.php';
 ?>
 <!doctype html>
 <html>
@@ -44,23 +43,41 @@ include 'config/select.php';
             
             $m = $_POST["tendn"];  
             $t = $_POST["password"];
-            $num_rowssv=dangnhap('sinhvien','mssv',$m,$t);
-            $num_rowsgv=dangnhap('giangvien','magv',$m,$t);
-            $num_rowsnv=dangnhap('nhanvien','manv',$m,$t);
+            $sqlsv="SELECT mssv,pass FROM sinhvien WHERE mssv='$m' and pass='$t'";        
+            $stmsv = $obj->prepare($sqlsv);
+            $stmsv->execute();
+            $num_rowssv=$stmsv->rowCount();
+
+
+             $sqlgv="SELECT magv,pass FROM giangvien WHERE magv='$m' and pass='$t'";        
+            $stmgv = $obj->prepare($sqlgv);
+            $stmgv->execute();
+            $num_rowsgv=$stmgv->rowCount();
+
+             $sqlnv="SELECT manv,pass FROM nhanvien WHERE manv='$m' and pass='$t'";        
+            $stmnv = $obj->prepare($sqlnv);
+            $stmnv->execute();
+            $num_rowsnv=$stmnv->rowCount();
 
             if ($num_rowssv!=0 )
             {
+               # code...
                 $_SESSION['user']=$_POST["tendn"];
+                //print_r($_SESSION); exit();
                 header('Location: trangchu.php');                
             }
             elseif ($num_rowsnv!=0) 
             {
+               # code...
                 $_SESSION['user']=$_POST["tendn"];
+                //print_r($_SESSION); exit();
                 header('Location: quanlythongtin.php');                
             }
             elseif ($num_rowsgv!=0) 
             {
+               # code...
                 $_SESSION['user']=$_POST["tendn"];
+                //print_r($_SESSION); exit();
                 header('Location: xemlichday.php');                
             }
             else
@@ -71,10 +88,12 @@ include 'config/select.php';
                 $valueten=$_POST['tendn'];
             if ($_POST['tendn']=='') 
             {
+                # code...
                 $baoloiten='Tên đăng nhập không được bỏ trống';
             }
             elseif (strlen(trim($_POST['tendn'],' '))<8) 
             {
+                # code...
                 $baoloiten='Tên đăng nhập phải lớn hơn 8 ký tự, không bao gồm khoảng trắng ở đầu và cuối';
             }
             else
@@ -83,10 +102,11 @@ include 'config/select.php';
             }
             if ($_POST['password']=='') 
             {
+                # code...
                 $baoloipw='Bạn chưa điền mật khẩu';
             }
-            elseif (strlen($_POST['password'])<8 || strlen(str_replace(' ','',$_POST['password']))!=strlen($_POST['password']) || strlen($_POST['password'])>12) 
-            {
+            elseif (strlen($_POST['password'])<8 || strlen(str_replace(' ','',$_POST['password']))!=strlen($_POST['password']) || strlen($_POST['password'])>12) {
+                # code...
                 $baoloipw='Mật khẩu phải 8 đến 12 ký tự và không bao gồm các khoảng trắng';
             }
             else

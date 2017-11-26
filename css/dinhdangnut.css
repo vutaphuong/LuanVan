@@ -74,3 +74,20 @@ li a
 	position: absolute;
 	display: block;
 }
+.khungavt
+{
+	width: 151px;
+	height: 151px;
+	border-color: #126F16;
+	border-radius: 5px;
+	border-style: groove;
+	border-width: 2px;
+	background: white;
+}
+.khungavt img
+{
+	width: 150px;
+	height: 150px;
+
+	border-width: 2px;
+}

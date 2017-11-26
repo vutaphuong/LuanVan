@@ -4,6 +4,10 @@ if (!isset($_SESSION))
   {
     session_start();
   }
+if (isset($_SESSION['user'])) {
+  
+ $tennd=$_SESSION['user'];
+}  
 
 if (!isset($_SESSION['user'])) {
   
@@ -57,7 +61,8 @@ if (!isset($_SESSION['user'])) {
     <li class="hvr-sweep-to-right hvr-ripple-out"><a href="thongtin.php">Thông tin cá nhân</a></li>
     </ul>
     </div>
-    <div id="noidung">    
+    <div id="noidung">  
+    <p style="color: red;font-size: 30px">Tên: <?php echo $tennd?></p>  
     <iframe src="https://drive.google.com/file/d/1TU6l5faustXDL5Vt6BvOdMl7zhWXPCNz/preview" width="900" height="700"></iframe>
     </div>
     </div>    

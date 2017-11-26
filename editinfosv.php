@@ -1,18 +1,5 @@
 <?php
-if (!isset($_SESSION)) 
-  {
-    session_start();
-  }
-
-if (isset($_SESSION['user'])) {
-  
-  $tennd=$_SESSION['user'];
-}
-else
-{  
-  header('Location: index.php');
-}
-include 'config/config.php';
+include "config/select.php";
 ?>
 <!doctype html>
 <html>
@@ -63,63 +50,14 @@ include 'config/config.php';
     </ul>
     </div>
     <div id="noidung">
-      <?php
-        # code...
-            $sqlhoten="SELECT hoten FROM `sinhvien`";
-            $sqlhoten."WHERE MSSV='$tennd'";;        
-            $datahoten = $obj->prepare($sqlhoten);
-            $datahoten->execute();
-            $manghoten=$datahoten->fetch(PDO::FETCH_ASSOC);
-            $hoten=$manghoten['hoten'];
-
-
-            $sqlgt="SELECT gt FROM `sinhvien`";
-            $sqlgt."WHERE MSSV='$tennd'";        
-            $datagt = $obj->prepare($sqlgt);
-            $datagt->execute();
-            $manggt=$datagt->fetch(PDO::FETCH_ASSOC);
-            $gt=$manggt['gt'];
-
-            $sqlquequan="SELECT quequan FROM `sinhvien`";
-            $sqlquequan."WHERE MSSV='$tennd'";        
-            $dataquequan = $obj->prepare($sqlquequan);
-            $dataquequan->execute();
-            $mangquequan=$dataquequan->fetch(PDO::FETCH_ASSOC);
-            $quequan=$mangquequan['quequan'];
-
-            $sqlnoio="SELECT noio FROM `sinhvien`";
-            $sqlnoio."WHERE MSSV='$tennd'";        
-            $datanoio = $obj->prepare($sqlnoio);
-            $datanoio->execute();
-            $mangnoio=$datanoio->fetch(PDO::FETCH_ASSOC);
-            $noio=$mangnoio['noio'];
-
-
-            $sqlavt="SELECT avt FROM `sinhvien`";
-            $sqlavt."WHERE MSSV='$tennd'";        
-            $dataavt = $obj->prepare($sqlavt);
-            $dataavt->execute();
-            $mangavt=$dataavt->fetch(PDO::FETCH_ASSOC);
-            $avt=$mangavt['avt']; 
-            if ($avt=='' && $gt=="Nam") 
-            {
-              # code...
-                $avatar='image/nam.png';
-            }
-            elseif($avt=='' && $gt='Nữ')
-            {
-                $avatar='image/nu.jpg';
-            }
-    ?>
     <table style="font-size:14px">
         <form action="updatesv.php" method="post" enctype="multipart/form-data" >
-                <tr><td colspan="2"><div class="khungavt"><img src="<?php echo $avatar;?>"></div></td></tr>
+                <tr><td colspan="2"><div class="khungavt"><img src="<?php echo $hinh=selecthinh('avt','sinhvien','MSSV');?>"></div></td></tr>
                 <tr><td colspan="2"><input type="file" name="editavt" value="Đổi avatar"></td></tr>
-                <tr ><td>Tên đăng nhập: </td><td style="font-weight: bold;"><?php echo $tennd;?></td></tr> 
-                <tr ><td>Họ và tên: </td><td style="font-weight: bold;"><?php echo $hoten;?></td></tr>
-                <tr ><td>Giới tính: </td><td style="font-weight: bold;"><?php echo $gt;?></td></tr> 
-                <tr ><td>Quê quán</td><td style="font-weight: bold;"><?php echo $quequan;?></td></tr> 
-                <tr ><td>Nơi ở hiện tại</td><td style="font-weight: bold;"><?php echo $noio;?></td></tr>
+                <tr><td>Họ và tên: </td><td><?php echo $hoten=select('hoten','sinhvien','MSSV');?></td></tr>
+                <tr><td>Giới tính: </td><td><?php echo $gt=select('gt','sinhvien','MSSV');?></td></tr>
+                <tr><td>Quê quán: </td><td><?php echo $qq=select('quequan','sinhvien','MSSV');?></td></tr>
+                <tr><td>Nơi ở hiện tại: </td><td><?php echo $noio=select('noio','sinhvien','MSSV');?></td></tr>
                 <tr ><td>Sở thích: </td><td><input type="text" name="st"></td></tr> 
                 <tr ><td>Email: </td><td><input type="text" name="email"></td></tr> 
                 <tr ><td>Số điện thoại: </td><td><input type="text" name="sdt"></td></tr> 

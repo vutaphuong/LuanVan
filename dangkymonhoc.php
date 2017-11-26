@@ -1,19 +1,9 @@
 <?php
-if (!isset($_SESSION)) 
-  {
-    session_start();
-  }
+include 'config/kiemtra_SESION.php';
+include 'config/config.php';
+include "/include/function.php";
 
-if (isset($_SESSION['user'])) {
-  
-  $tennd=$_SESSION['user'];
-}
-else
-{  
-  header('Location: index.php');
-}
-
-include 'config/select.php';
+spl_autoload_register("loadClass");
 ?>
 <!doctype html>
 <html>
@@ -44,6 +34,12 @@ include 'config/select.php';
       
 </head>
 <body >
+  <?php
+    $obj = new Db();
+    $rows=$obj->select("SELECT * FROM monhoc JOIN (nganh JOIN sinhvien on nganh.manganh=sinhvien.manganh) on monhoc.manganh=nganh.manganh 
+WHERE monhoc.manganh=(SELECT sinhvien.manganh FROM sinhvien WHERE mssv='CD12345678');");
+?>
+
     <div id="header">
     <table align="center" class="tb">
         <tr class="logo"><td class="logophai stu1">S</td><td class="logotrai stu2">T</td><td class="logophai stu1">U</td><td class="logotrai">o</td><td class="logophai">n</td><td class="logotrai">l</td><td class="logophai">i</td><td class="logotrai">n</td><td class="logophai">e</td></tr>
@@ -63,18 +59,41 @@ include 'config/select.php';
     </ul>
     </div>
     <div id="noidung">
-    <p style="color: red;font-size: 30px">Tên: <?php echo $tennd?></p>  
-    <table style="font-size:14px">
-                <tr><td colspan="2"><div class="khungavt"><img src="<?php echo $hinh=selecthinh('avt','sinhvien','MSSV',$tennd);?>"></div></td></tr>
-                <tr><td>Họ và tên: </td><td><?php echo $hoten=select('hoten','sinhvien','MSSV',$tennd);?></td></tr>
-                <tr><td>Giới tính: </td><td><?php echo $gt=select('gt','sinhvien','MSSV',$tennd);?></td></tr>
-                <tr><td>Quê quán: </td><td><?php echo $qq=select('quequan','sinhvien','MSSV',$tennd);?></td></tr>
-                <tr><td>Nơi ở hiện tại: </td><td><?php echo $noio=select('noio','sinhvien','MSSV',$tennd);?></td></tr>
-                <tr><td>Sở thích: </td><td><?php echo $sothich=select('sothich','sinhvien','MSSV',$tennd);?></td></tr>
-                <tr><td>Email: </td><td><?php echo $email=select('email','sinhvien','MSSV',$tennd);?></td></tr>
-                <tr><td>Số điện thoại: </td><td>0<?php echo $sdt=select('sdt','sinhvien','MSSV',$tennd);?></td></tr>
-                <tr><td colspan="2" ><a href="editinfosv.php" >Chỉnh sửa</a></td></tr>
-              </table>
+      <table border="1" style="border-style: inset; border-color: red; margin-left: 100px;" cellspacing="" ="0">
+      <tr>
+        <td>STT</td>
+        <td>Mã môn học</td>
+        <td>Tên môn học</td>
+        <td>Mã ngành</td>
+        <td>Tín chỉ</td>
+        <td>Số tiết thực hành</td>
+        <td>Số tiết lý thuyết</td>
+        <td>Đăng ký</td>
+      </tr>
+      <form action="xulytindangky.php" method="post">
+    <?php
+    $i=1;
+        foreach($rows as $row)
+      {
+        
+    ?>
+        <tr>
+          <td><?php echo $i?></td>
+          <td><?php echo $row['mamh'] ?></td>
+          <td><?php echo $row['tenmh'] ?></td>
+          <td><?php echo $row['manganh'] ?></td>
+          <td><?php echo $row['tinchi'] ?></td>
+          <td><?php echo $row['thuchanh'] ?></td>
+          <td><?php echo $row['lythuyet'] ?></td>
+          <td><input type="checkbox" name="dangky" value="<?php echo $row['mamh'] ?>"></td>
+        </tr>
+<?php
+  $i++;
+  } 
+?>
+<tr><td colspan="8" align="right"><input type="submit" name="submit" value="Đăng ký"></td></tr>
+</form>
+</table>
             </div>
     </div>            
   </div>
