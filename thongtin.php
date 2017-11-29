@@ -63,16 +63,40 @@ include 'config/select.php';
     </ul>
     </div>
     <div id="noidung">
-    <p style="color: red;font-size: 30px">Tên: <?php echo $tennd?></p>  
     <table style="font-size:14px">
-                <tr><td colspan="2"><div class="khungavt"><img src="<?php echo $hinh=selecthinh('avt','sinhvien','MSSV',$tennd);?>"></div></td></tr>
-                <tr><td>Họ và tên: </td><td><?php echo $hoten=select('hoten','sinhvien','MSSV',$tennd);?></td></tr>
-                <tr><td>Giới tính: </td><td><?php echo $gt=select('gt','sinhvien','MSSV',$tennd);?></td></tr>
-                <tr><td>Quê quán: </td><td><?php echo $qq=select('quequan','sinhvien','MSSV',$tennd);?></td></tr>
-                <tr><td>Nơi ở hiện tại: </td><td><?php echo $noio=select('noio','sinhvien','MSSV',$tennd);?></td></tr>
-                <tr><td>Sở thích: </td><td><?php echo $sothich=select('sothich','sinhvien','MSSV',$tennd);?></td></tr>
-                <tr><td>Email: </td><td><?php echo $email=select('email','sinhvien','MSSV',$tennd);?></td></tr>
-                <tr><td>Số điện thoại: </td><td>0<?php echo $sdt=select('sdt','sinhvien','MSSV',$tennd);?></td></tr>
+      <?php
+  $data = select("*", "sinhvien", 'MSSV', $tennd);
+      ?>
+                <tr>
+                  <td colspan="2">
+                    <div class="khungavt">
+                      <img src="<?php 
+                        if($data['avt']=='')
+                        {
+                          if($data['gt']=="Nam")
+                          {
+                            echo 'image/nam.png';
+                          }
+                          else
+                          {
+                            echo 'image/nu.jpg';
+                          }
+                        }
+                        else
+                        {
+                          echo $data['avt'];
+                        }
+                      ?>">
+                    </div>
+                  </td>
+                 </tr>
+                <tr><td>Họ và tên: </td><td><?php echo $data['hoten'];?></td></tr>
+                <tr><td>Giới tính: </td><td><?php echo $data['gt'];?></td></tr>
+                <tr><td>Quê quán: </td><td><?php echo $data['quequan'];?></td></tr>
+                <tr><td>Nơi ở hiện tại: </td><td><?php echo $data['noio'];?></td></tr>
+                <tr><td>Sở thích: </td><td><?php echo $data['sothich'];?></td></tr>
+                <tr><td>Email: </td><td><?php echo $data['email'];?></td></tr>
+                <tr><td>Số điện thoại: </td><td>0<?php echo $data['sdt'];?></td></tr>
                 <tr><td colspan="2" ><a href="editinfosv.php" >Chỉnh sửa</a></td></tr>
               </table>
             </div>

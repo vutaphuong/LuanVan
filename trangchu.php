@@ -53,16 +53,15 @@ if (!isset($_SESSION['user'])) {
     <div id="thanweb">
     <div id="menutrai">
     <ul>
-    <li class="hvr-sweep-to-right hvr-ripple-out"><a>Trang chủ</a></li>
+    <li class="hvr-sweep-to-right hvr-ripple-out"><a href="trangchu.php">Trang chủ</a></li>
     <li class="hvr-sweep-to-right hvr-ripple-out"><a>Thông báo ĐKMH</a></li>
     <li class="hvr-sweep-to-right hvr-ripple-out"><a>Quy định ĐKMH</a></li>
-    <li class="hvr-sweep-to-right hvr-ripple-out"><a>Đăng ký môn học</a></li>
+    <li class="hvr-sweep-to-right hvr-ripple-out"><a href="dangkymonhoc.php">Đăng ký môn học</a></li>
     <li class="hvr-sweep-to-right hvr-ripple-out"><a>Thông báo học phí</a></li>
     <li class="hvr-sweep-to-right hvr-ripple-out"><a href="thongtin.php">Thông tin cá nhân</a></li>
     </ul>
     </div>
     <div id="noidung">  
-    <p style="color: red;font-size: 30px">Tên: <?php echo $tennd?></p>  
     <iframe src="https://drive.google.com/file/d/1TU6l5faustXDL5Vt6BvOdMl7zhWXPCNz/preview" width="900" height="700"></iframe>
     </div>
     </div>    

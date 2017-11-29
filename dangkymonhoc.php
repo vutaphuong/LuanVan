@@ -34,11 +34,7 @@ spl_autoload_register("loadClass");
       
 </head>
 <body >
-  <?php
-    $obj = new Db();
-    $rows=$obj->select("SELECT * FROM monhoc JOIN (nganh JOIN sinhvien on nganh.manganh=sinhvien.manganh) on monhoc.manganh=nganh.manganh 
-WHERE monhoc.manganh=(SELECT sinhvien.manganh FROM sinhvien WHERE mssv='CD12345678');");
-?>
+ 
 
     <div id="header">
     <table align="center" class="tb">
@@ -59,18 +55,25 @@ WHERE monhoc.manganh=(SELECT sinhvien.manganh FROM sinhvien WHERE mssv='CD123456
     </ul>
     </div>
     <div id="noidung">
-      <table border="1" style="border-style: inset; border-color: red; margin-left: 100px;" cellspacing="" ="0">
-      <tr>
+       <?php
+          $obj = new Db();
+          $rows=$obj->select("SELECT * FROM monhoc JOIN (nganh JOIN sinhvien on nganh.manganh=sinhvien.manganh) on monhoc.manganh=nganh.manganh 
+            WHERE monhoc.manganh=(SELECT sinhvien.manganh FROM sinhvien WHERE mssv='$tennd');");
+      ?>
+      <form action="xulythongtindangky.php" method="post">        
+        <table border="1" style="border-style: inset; border-color: red; margin-left: 30px;" cellspacing="" ="0">
+
+      <tr style="text-align: center;">
         <td>STT</td>
         <td>Mã môn học</td>
         <td>Tên môn học</td>
         <td>Mã ngành</td>
+        <td>Học kỳ</td>
         <td>Tín chỉ</td>
         <td>Số tiết thực hành</td>
         <td>Số tiết lý thuyết</td>
         <td>Đăng ký</td>
       </tr>
-      <form action="xulytindangky.php" method="post">
     <?php
     $i=1;
         foreach($rows as $row)
@@ -78,20 +81,24 @@ WHERE monhoc.manganh=(SELECT sinhvien.manganh FROM sinhvien WHERE mssv='CD123456
         
     ?>
         <tr>
-          <td><?php echo $i?></td>
+          <td style="text-align: center;"><?php echo $i?></td>
           <td><?php echo $row['mamh'] ?></td>
           <td><?php echo $row['tenmh'] ?></td>
-          <td><?php echo $row['manganh'] ?></td>
-          <td><?php echo $row['tinchi'] ?></td>
-          <td><?php echo $row['thuchanh'] ?></td>
-          <td><?php echo $row['lythuyet'] ?></td>
-          <td><input type="checkbox" name="dangky" value="<?php echo $row['mamh'] ?>"></td>
+          <td style="text-align: center;"><?php echo $row['manganh'] ?></td>
+          <td style="text-align: center;"><?php echo $row['hocky'] ?></td>
+          <td style="text-align: center;"><?php echo $row['tinchi'] ?></td>
+          <td style="text-align: center;"><?php echo $row['thuchanh'] ?></td>
+          <td style="text-align: center;"><?php echo $row['lythuyet'] ?></td>
+          <td style="text-align: center;"><input type="checkbox" name="dangky[]" value="<?php echo $row['mamh'] ?>"></td>
         </tr>
 <?php
   $i++;
   } 
+$date = getdate();
+$ngaydk=$date['year'].'-'.$date['mon'].'-'.$date['mday'];
 ?>
-<tr><td colspan="8" align="right"><input type="submit" name="submit" value="Đăng ký"></td></tr>
+<input type="hidden" name="ngaydk" value="<?php echo $ngaydk?>">
+<tr><td colspan="9" align="right"><input type="submit" name="submit" value="Đăng ký"></td></tr>
 </form>
 </table>
             </div>

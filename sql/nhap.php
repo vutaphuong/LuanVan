@@ -1,14 +1,11 @@
 <?php
-$ten='CD12345678';
-$teb='DH12345678';
- preg_match('/^CD[0-9]*/', $ten,$CD);
-// print_r($CD);exit();
-//
-if(!isset($CD[0]))
-	echo 'Rỗng';
-else 
-{
-	$xuat=$CD[0];
-	echo $xuat;
-}
- ?>
+	if (isset($_POST['submit'])) {
+		
+	}
+?>
+<form action="nhap.php" method="post">
+	<input type="checkbox" name="monhoc" value="mon1">Môn 1<br/>
+	<input type="checkbox" name="monhoc" value="mon2">Môn 2<br/>
+	<input type="checkbox" name="monhoc" value="mon3">Môn 3<br/>
+	<input type="submit" name="submit" value="Gửi">
+</form>

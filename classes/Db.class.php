@@ -63,6 +63,15 @@ class Db{
 			return $this->getRowCount();
 		}
 	
-	
+		//====================================================
+
+		function getThongTinDangKy($tendn)
+			{
+				$sql="SELECT * from v_dangky where mssv='$tendn' ";
+				return $this->query($sql);	
+			}
+
+
+		//===================================================
 	}
 ?>
