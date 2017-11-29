@@ -1,3 +1,7 @@
+<?php
+	include 'classes/config.php';
+	include 'classes/function.php';
+?>
 
 <!doctype html>
 <html>
@@ -53,9 +57,25 @@
    				<td><input type="radio" name="gt" value="name" checked="checked" required>Nam</input> <input type="radio" name="gt" value="nu">Nữ</input></td>
    			</tr>
    			<tr>
+   				<td class="nvnhap">Quê quán</td>
+   				<td>
+	   				<select name="quequan" style="width: 294px;height: 30px">
+	   					<option name="quequan">Chọn quê quán của Sinh viên</option>
+	   					<option name="quequan">Hà Nội</option>
+	   					<option name="quequan">Thái Bình</option>
+	   					<option name="quequan">Quảng Bình</option>
+	   					<option name="quequan">Thanh Hóa</option>
+	   					<option name="quequan">Huế</option>
+	   					<option name="quequan">Thái Nguyên</option>
+	   					<option name="quequan">Lâm Đồng</option>
+	   					<option name="quequan">Đăk Nông</option>
+	   				</select>
+	   			</td>
+   			</tr>
+   			<tr>
    				<td class="nvnhap">Mã nhân viên</td>
    				<td>
-	   				<select style="width: 294px;height: 30px">
+	   				<select name="manv" style="width: 294px;height: 30px">
 	   					<option>Chọn mã Nhân viên</option>
 	   					<option>NV12345678</option>
 	   					<option>NV87654321</option>
@@ -65,7 +85,7 @@
    			<tr>
    				<td class="nvnhap">Mã khoa</td>
    				<td>
-	   				<select style="width: 294px;height: 30px">
+	   				<select name="makhoa" style="width: 294px;height: 30px">
 	   					<option>Chọn mã Khoa</option>
 	   					<option>CNTT</option>
 	   					<option>CNTP</option>
@@ -75,7 +95,7 @@
    			<tr>
    				<td class="nvnhap">Mã nghành</td>
    				<td>
-   					<select style="width: 294px;height: 30px">
+   					<select name="manganh" style="width: 294px;height: 30px">
    						<option>Chọn mã Nghành</option>
    						<option>KDCLSP</option>
    						<option>KTBQTP</option>
@@ -86,7 +106,7 @@
    			<tr>
    				<td class="nvnhap">Mã giảng viên</td>
    				<td>
-   					<select style="width: 294px;height: 30px" required>
+   					<select name="covanht" style="width: 294px;height: 30px" required>
    						<option>Chọn mã Giảng viên</option>
    						<option>GV12345678</option>
    						<option>GV87654321</option>
@@ -106,52 +126,60 @@
             	catch(Exception $e){
             		echo $e->getMessage(); exit;
             	}
-
-            	if(isset($_PORT["sm"]))
+            	if(isset($_POST["sm"]))
             	{
-            		$sql="insert into sinhvien(mssv,hoten,gt,quequan,manv,covanht,makhoa) values(:mssv,:hoten,:gt,:manv,:makhoa,:manghanh,:magv)";
-            		$arr = array(":mssv"=>$_PORT["mssv"],":hoten"=>$_PORT["hoten"],":gt"=>$_PORT["gt"],":manv"=>$_PORT["manv"],":makhoa"=>$_PORT["makhoa"],":manghanh"=>$_PORT["manghanh"],":magv"=>$_PORT["magv"]);
+            		$sql="insert into sinhvien(mssv,hoten,gt,quequan,manv,makhoa,manganh,covanht) values(:mssv,:hoten,:gt,:quequan,:manv,:makhoa,:manganh,:covanht)";
+            		$arr = array(":mssv"=>$_POST["mssv"],":hoten"=>$_POST["hoten"],":gt"=>$_POST["gt"],":quequan"=>$_POST["quequan"],":manv"=>$_POST["manv"],":makhoa"=>$_POST["makhoa"],":manganh"=>$_POST["manganh"],":covanht"=>$_POST["covanht"]);
+
+            		print_r($arr);
+
             		$stm = $pdh->prepare($sql);
             		$stm->execute($arr);
             		$n = $stm->rowCount();
-            		if($n>0) echo "Đã thêm sinh $n viên";
-            		else echo "Lỗi không thêm được sinh viên";
-            	}
 
+            		print_r($stm);
+            		print_r($n);
+
+            		if($n>0) 
+            		{
+            			echo "Đã thêm $n sinh viên";
+            		}
+            		else 
+            			echo "Lỗi! Không thêm được sinh viên";
+            	}
             	$stm = $pdh->prepare("select * from sinhvien");
             	$stm->execute();
             	$rows = $stm->fetchAll(PDO::FETCH_ASSOC);
             ?>
-              <table border="1" cellpadding="1" cellspacing="1" align="center" width="900px">
+              <table border="1" cellpadding="1" cellspacing="1" align="center" width="1000px">
                 <tr>
                   <td colspan="9" align="center" style="font-family: 'Comic Sans MS';font-size: 30px;color: blue;">Danh sách sinh viên</td>
                 </tr>
                 <tr>
-	            	<td>Mã số sinh viên</td>
-	            	<td>Tên sinh viên</td>
-	            	<td>Giới tính</td>
-	            	<td>Quê quán</td>
-	            	<td>Mã Nhân viên</td>
-	            	<td>Mã nghành</td>
-	            	<td>Mã khoa</td>
-	            	<td>Mã giảng viên</td>
-	            	<td>Chỉnh sửa</td>
+	            	<td align="center">Mã số sinh viên</td>
+	            	<td align="center">Tên sinh viên</td>
+	            	<td align="center">Giới tính</td>
+	            	<td align="center">Quê quán</td>
+	            	<td align="center">Mã Nhân viên</td>
+	            	<td align="center">Mã nghành</td>
+	            	<td align="center">Mã khoa</td>
+	            	<td align="center">Mã giảng viên</td>
+	            	<td align="center">Chức năng</td>
                 </tr>
                 	<?php
                 	foreach ($rows as $row)
                 	{
                 	?>
                 		<tr>
-	                		<td>
-	                		<?php echo $row["mssv"] ?></td>
+	                		<td><?php echo $row["mssv"] ?></td>
 	                		<td><?php echo $row["hoten"] ?></td>
 	                		<td><?php echo $row["gt"] ?></td>
-	                		<td><?php echo $row["quequan"] ?></td>
+	                		<td><?php echo $row["quequan"]?></td>
 	                		<td><?php echo $row["manv"] ?></td>
 	                		<td><?php echo $row["manganh"] ?></td>
 	                		<td><?php echo $row["makhoa"] ?></td>
 	                		<td><?php echo $row["covanht"] ?></td>
-	                		<td><a href="chinhsuasv.php">Chỉnh sửa   <a href='kiemtraduyet.php?mssv=<?php echo $row["mssv"];?>'>Xóa</td>
+	                		<td><a href="kiemtraduyet.php?mssv=<?php echo $row["mssv"];?>">Xóa  <a href="chinhsuasv.php">Chỉnh sửa</td>
                 		</tr>
                 	<?php
                 	}

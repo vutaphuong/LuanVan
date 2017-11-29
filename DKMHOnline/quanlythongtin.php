@@ -51,19 +51,19 @@ if (!isset($_SESSION['tenuser'])) {
     <div id="noidung">    
     
     <div class="chucnangnv">
-        <p><a class="1" href="#">Thông tin đăng ký</a></p>
+        <p>Thông tin đăng ký</p>
       </div>
       <div class="chucnangnv">
-        <p><a class="1" href="#">Thông tin giáo viên</a></p>
+        <p>Thông tin giáo viên</p>
       </div>
       <div class="chucnangnv">
-        <p><a class="1" href="#">Tạo lịch học</a></p>
+        <p>Tạo lịch học</p>
       </div>
       <div class="chucnangnv">
-        <p><a class="1" href="#">Chỉnh sửa thông tin cá nhân</a></p>
+        <p>Chỉnh sửa thông tin cá nhân</p>
       </div>
       <div class="chucnangnv">
-        <p><a class="1" href="index.php">Chỉnh sửa thông tin Sinh viên</a></p>
+        <p><a href="index.php">Chỉnh sửa thông tin Sinh viên</a></p>
       </div>
     </div>
     </div>    

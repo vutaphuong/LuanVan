@@ -12,7 +12,7 @@
 	$arr = array(":mssv"=>$mssv);
 
 	$stm = $pdh->prepare($sql);
-	$stm->execute($arr);
+	$stm->execute($arr);                
 	$n = $stm->rowCount();
 	if($n>0) $thongbao = "Đã xóa $n sinh viên !";
 	else $thongbao="Xóa bị lỗi!";
