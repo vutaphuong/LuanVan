@@ -8,8 +8,8 @@
 	}
 
 	$mssv = isset($_GET["mssv"])?$_GET["mssv"]:"";
-	$sql = "update from dangky where mssv = :mssv ";
-	$sql1 = "update from sinhvien where mssv= :mssv ";
+	$sql = "delete from dangky where mssv = :mssv ";
+	$sql1 = "delete from sinhvien where mssv= :mssv ";
 	$arr = array(":mssv"=>$mssv);
 
 	$stm = $pdh->prepare($sql);
@@ -17,8 +17,9 @@
 	$stm1 = $pdh->prepare($sql1);
 	$stm1->execute($arr);              
 	$n = $stm->rowCount();
-	if($n>0) $thongbao = "Đã thêm $n sinh viên !";
-	else $thongbao="Thêm bị lỗi!";
+	$m = $stm1->rowCount();
+	if($m>0) $thongbao = "Đã xóa $m sinh viên !";
+	else $thongbao="Xóa bị lỗi!";
 ?>
 <script language="javascript">
 	alert("<?php echo $thongbao;?>");

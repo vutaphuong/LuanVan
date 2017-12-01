@@ -1,14 +1,6 @@
 
 <?php
-if (!isset($_SESSION)) 
-  {
-    session_start();
-  }
-
-if (!isset($_SESSION['tenuser'])) {
-  
- //header('Location: index.php');
-}
+  include "config/kiemtra_SESION.php";
 ?>
 <!doctype html>
 <html>
@@ -40,10 +32,10 @@ if (!isset($_SESSION['tenuser'])) {
 </head>
 <body >
     <div id="header">
-    <table align="center" class="tb">
-        <tr class="logo"><td class="logophai stu1">S</td><td class="logotrai stu2">T</td><td class="logophai stu1">U</td><td class="logotrai">o</td><td class="logophai">n</td><td class="logotrai">l</td><td class="logophai">i</td><td class="logotrai">n</td><td class="logophai">e</td></tr>
-        </table>
-        </div>
+      <table align="center" class="tb">
+          <tr class="logo"><td class="logophai stu1">S</td><td class="logotrai stu2">T</td><td class="logophai stu1">U</td><td class="logotrai">o</td><td class="logophai">n</td><td class="logotrai">l</td><td class="logophai">i</td><td class="logotrai">n</td><td class="logophai">e</td></tr>
+      </table>
+    </div>
         
     <div id="main">
     <div id="thanweb">
@@ -61,6 +53,9 @@ if (!isset($_SESSION['tenuser'])) {
       </div>
       <div class="chucnangnv">
         <p>Chỉnh sửa thông tin cá nhân</p>
+      </div>
+      <div class="chucnangnv">
+        <p><a href="themsinhvien.php">Chỉnh sửa thông tin Sinh viên</a></p>
       </div>
     </div>
     </div>    
