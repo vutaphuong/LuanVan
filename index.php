@@ -105,13 +105,17 @@ include 'config/select.php';
     <table align="center" class="tb">
         <tr class="logo"><td class="logophai stu1">S</td><td class="logotrai stu2">T</td><td class="logophai stu1">U</td><td class="logotrai">o</td><td class="logophai">n</td><td class="logotrai">l</td><td class="logophai">i</td><td class="logotrai">n</td><td class="logophai">e</td></tr>
         <form action="index.php" method="post">
-                <tr align="center"><td colspan="9" class="inputdnphai ">
+                <tr align="center">
+                    <td colspan="9" class="inputdnphai ">
                     <input type="text" class="inputdn" placeholder="Tên đăng nhập" name="tendn" maxlength="10" value="<?php echo $valueten ?>">
-                </td></tr> 
+                    </td>
+                </tr> 
                 <tr align="center"><td colspan="9" class="baoloi"><?php echo $baoloiten; ?></td></tr>
-                <tr align="center"><td colspan="9" class="inputdntrai">
+                <tr align="center">
+                    <td colspan="9" class="inputdntrai">
                     <input class="inputdn" type="password" placeholder="Mật khẩu" name="password" maxlength="10">
-                    </td></tr>
+                    </td>
+                </tr>
                 <tr align="center"><td colspan="9" class="baoloi"><?php echo $baoloipw; ?></td></tr>
                 <tr align="center"><td colspan="9" >
                     <input type="submit" class="inputdnphai sbm hvr-ripple-out" value="Đăng nhập" name="submit">

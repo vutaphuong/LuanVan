@@ -205,7 +205,7 @@
 	                		<td align="center"><?php echo $row["manganh"] ?></td>
 	                		<td align="center"><?php echo $row["makhoa"] ?></td>
 	                		<td><?php echo $row["covanht"] ?></td>
-	                		<td><a href="kiemtraduyet.php?mssv=<?php echo $row["mssv"];?>">Xóa  <a href="chinhsuasv.php">Chỉnh sửa</td>
+	                		<td><a href="kiemtraduyet.php?mssv=<?php echo $row["mssv"];?>">Xóa <a href="chinhsuasv.php?mssv=<?php echo $row['mssv'];?>">Chỉnh sửa</a></td>
                 		</tr>
                 	<?php
                 	}

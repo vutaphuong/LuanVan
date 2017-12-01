@@ -1,26 +1,20 @@
 <?php
-	try{
-		$pdh = new PDO("mysql:host=localhost;dbname=dkmhonline","root","");
-		$pdh->query("set name 'utf8' ");
-	}
-	catch(Exception $e){
-		echo $e->getMessage(); exit;
-	}
+    include 'classes/config.php';
+    include 'classes/function.php';
+  	spl_autoload_register("loadClass");
 
-	$mssv = isset($_GET["mssv"])?$_GET["mssv"]:"";
-	$sql = "update from dangky where mssv = :mssv ";
-	$sql1 = "update from sinhvien where mssv= :mssv ";
-	$arr = array(":mssv"=>$mssv);
-
-	$stm = $pdh->prepare($sql);
-	$stm->execute($arr);  
-	$stm1 = $pdh->prepare($sql1);
-	$stm1->execute($arr);              
-	$n = $stm->rowCount();
-	if($n>0) $thongbao = "Đã thêm $n sinh viên !";
-	else $thongbao="Thêm bị lỗi!";
+  	if(isset($_GET["sm"]))
+  	{
+	  	$mssv = $_GET["masv"];
+	  	$hoten = $_GET["hoten"];
+	  	$gt = $_GET["gt"];
+	  	$noio = $_GET["noio"];
+	  	$quequan = $_GET["quequan"];
+	  	$manganh = $_GET["manganh"];
+	  	$makhoa = $_GET["makhoa"];
+	  	$magv = $_GET["covanht"];
+	  	$obj = new Db();
+	  	$moi=$obj->select("UPDATE `sinhvien` SET `hoten` = '$hoten', `gt` = '$gt', `noio` = '$noio', `quequan` = '$quequan', `manganh` = '$manganh', `makhoa` = '$makhoa', `covanht` = '$magv' WHERE `sinhvien`.`mssv` = '$mssv'");
+	}
+  	header('location:themsinhvien.php');
 ?>
-<script language="javascript">
-	alert("<?php echo $thongbao;?>");
-	window.location = "themsinhvien.php";
-</script>

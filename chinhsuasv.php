@@ -1,5 +1,8 @@
 <?php
-include ("config/config.php");
+    include 'config/kiemtra_SESION.php';
+    include 'classes/config.php';
+    include 'classes/function.php';
+  spl_autoload_register("loadClass");
 ?>
 <!doctype html>
 <html>
@@ -30,28 +33,42 @@ include ("config/config.php");
 
 </head>
 <body > 
+
     <?php
-        
-    ?>   
-    <table align="center" class="tb">
+        $laymssv = $_GET["mssv"];
+        $obj = new Db();
+        $row = $obj->select("select * from sinhvien where mssv = '$laymssv' ");
+        foreach ($row as $row) 
+        {
+            # code...
+            $valuemssv = $row["mssv"];
+            $valueten = $row["hoten"];
+            $valuegt = $row["gt"];
+            $valuenoio = $row["noio"];
+            $valuequequan = $row["quequan"];
+            $valuenganh = $row["manganh"];
+            $valuekhoa = $row["makhoa"];
+            $valuegv = $row["covanht"];
+        }
+    ?>
+
+
+
+    <table align="center" class="tb" enctype="multipart/form-data">
         <tr class="logo"><td class="logophai stu1">S</td><td class="logotrai stu2">T</td><td class="logophai stu1">U</td><td class="logotrai">o</td><td class="logophai">n</td><td class="logotrai">l</td><td class="logophai">i</td><td class="logotrai">n</td><td class="logophai">e</td></tr>
-        
-            <form method="post" enctype="multipart/form-data" id="formnv">
+    </table>
+            <form method="get" enctype="multipart/form-data" action="updatesv.php" >
             <table style="margin:0 auto" cellpadding="11px">
             	<tr >
                 	<td colspan="2" align="center" style="color:rgba(0,102,255,1);font-size:30px;font-family:'Comic Sans MS', cursive">Chỉnh sửa thông tin Sinh Viên</td>
                 </tr>
                 <tr>
                 	<td class="nvnhap">MSSV</td>
-                    <td ><input class="vien" type="text" name="masv" placeholder="Nhập mã số sinh viên" size="50" maxlength="10" required/></td>
-                </tr>
-                <tr>
-                	<td class="nvnhap">Mật khẩu</td>
-                    <td><input class="vien" type="password" name="passsv" placeholder="Nhập PassWord sinh viên" maxlength="10" size="50" required/></td>
+                    <td ><input class="vien" type="text" name="masv" placeholder="Nhập mã số sinh viên" size="50" maxlength="10" required value="<?php echo $valuemssv ?>" /></td>
                 </tr>
                 <tr>
                 	<td class="nvnhap">Họ và tên</td>
-                    <td><input class="vien" type="text" name="ten" placeholder="Nhập họ và tên sinh viên" size="50" required/></td>
+                    <td><input class="vien" type="text" name="hoten" placeholder="Nhập họ và tên sinh viên" size="50" required value="<?php echo $valueten ?>"/></td>
                 </tr>
                 <tr>
                 	<td class="nvnhap">Giới tính</td>
@@ -59,35 +76,31 @@ include ("config/config.php");
                 </tr>
                 <tr>
                 	<td class="nvnhap">Nơi ở</td>
-                    <td><input class="vien" type="text" name="noio" placeholder="Nhập nơi ở sinh viên" size="50" required/></td>
+                    <td><input class="vien" type="text" name="noio" placeholder="Nhập nơi ở sinh viên" size="50" required value="<?php echo $valuenoio ?>"/></td>
                 </tr>
                 <tr>
                 	<td class="nvnhap">Quê quán</td>
-                     <td><input class="vien" type="text" name="quequan" placeholder="Nhập quê quán của sinh viên" size="50" required/></td>
+                     <td><input class="vien" type="text" name="quequan" placeholder="Nhập quê quán của sinh viên" size="50" required value="<?php echo $valuequequan ?>"/></td>
                 </tr>
                 <tr>
-                    <td class="nvnhap">Nghành</td>
-                    <td><input class="vien" type="text" name"nghanh" placeholder="Nhập nghành của Sinh viên" size="50" required="Vui lòng nhập Nghành cho sinh viên"></input></td>
+                    <td class="nvnhap">Ngành</td>
+                     <td><input class="vien" type="text" name="manganh" placeholder="Nhập mã nghành của sinh viên" size="50" required value="<?php echo $valuenganh ?>"/></td>
                 </tr>
                 <tr>
                     <td class="nvnhap">Khoa</td>
-                    <td><input class="vien" type="text" name"khoa" placeholder="Nhập Khoa của Sinh viên" size="50" required></input></td>
+                     <td><input class="vien" type="text" name="makhoa" placeholder="Nhập khoa của sinh viên" size="50" required value="<?php echo $valuekhoa ?>"/></td>
                 </tr>
                 <tr>
-                    <td class="nvnhap">Học Kỳ</td>
-                    <td><input class="vien" type="text" name"hky" placeholder="Nhập học kỳ của Sinh viên" size="50" required></input></td>
+                    <td class="nvnhap">Cố vấn học tập</td>
+                     <td><input class="vien" type="text" name="covanht" placeholder="Nhập Cố vấn học tập của sinh viên" size="50" required value="<?php echo $valuegv ?>"/></td>
                 </tr>
-                <tr>
-                    <td align="right"><input type="reset" name="rs" value="Làm mới" class="rs" /></td>     
-                    <td align="center"><input type="submit" name="sm" value="Gửi" class="gui" /></td>    
-
+                <tr>    
+                    <td align="center" colspan="2"><input type="submit" name="sm" value="Lưu" class="gui" /></td>    
                 </tr>
                 <tr>
                    <td align="center"><a href="themsinhvien.php"><input type="button" name="qv" value="Quay về" class="rs" /></a></td>
                 </tr>
             </table>
             </form>
-            
-    </table>
 </body>
 </html>
