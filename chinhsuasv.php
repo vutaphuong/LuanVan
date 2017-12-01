@@ -30,7 +30,9 @@ include ("config/config.php");
 
 </head>
 <body > 
-
+    <?php
+        
+    ?>   
     <table align="center" class="tb">
         <tr class="logo"><td class="logophai stu1">S</td><td class="logotrai stu2">T</td><td class="logophai stu1">U</td><td class="logotrai">o</td><td class="logophai">n</td><td class="logotrai">l</td><td class="logophai">i</td><td class="logotrai">n</td><td class="logophai">e</td></tr>
         
