@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 24, 2017 at 07:43 AM
+-- Generation Time: Dec 02, 2017 at 08:15 AM
 -- Server version: 5.7.19
 -- PHP Version: 5.6.31
 
@@ -32,7 +32,6 @@ DROP TABLE IF EXISTS `dangky`;
 CREATE TABLE IF NOT EXISTS `dangky` (
   `madk` int(10) NOT NULL AUTO_INCREMENT,
   `ngaydk` date DEFAULT NULL,
-  `hocki` int(2) DEFAULT NULL,
   `mssv` varchar(10) DEFAULT NULL,
   `mamh` varchar(10) DEFAULT NULL,
   `manv` varchar(10) DEFAULT NULL,
@@ -42,15 +41,15 @@ CREATE TABLE IF NOT EXISTS `dangky` (
   KEY `mssv` (`mssv`),
   KEY `manv` (`manv`),
   KEY `magv` (`magv`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `dangky`
 --
 
-INSERT INTO `dangky` (`madk`, `ngaydk`, `hocki`, `mssv`, `mamh`, `manv`, `magv`) VALUES
-(1, '2017-11-17', 1, 'CD12345678', 'OSS', 'NV12345678', 'GV12345678'),
-(2, '2017-11-17', 1, 'DH87654321', 'KDCL', 'NV87654321', 'GV87654321');
+INSERT INTO `dangky` (`madk`, `ngaydk`, `mssv`, `mamh`, `manv`, `magv`) VALUES
+(42, '2017-11-29', 'CD12345678', 'DAPTTK', NULL, NULL),
+(43, '2017-11-29', 'CD12345678', 'LTUDWB', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -139,6 +138,7 @@ CREATE TABLE IF NOT EXISTS `monhoc` (
   `mamh` varchar(10) NOT NULL,
   `tenmh` varchar(50) NOT NULL,
   `manganh` varchar(10) DEFAULT NULL,
+  `hocky` int(2) DEFAULT NULL,
   `tinchi` int(2) NOT NULL,
   `sotiet` int(2) NOT NULL,
   `thuchanh` int(2) NOT NULL,
@@ -153,17 +153,17 @@ CREATE TABLE IF NOT EXISTS `monhoc` (
 -- Dumping data for table `monhoc`
 --
 
-INSERT INTO `monhoc` (`mamh`, `tenmh`, `manganh`, `tinchi`, `sotiet`, `thuchanh`, `lythuyet`, `doan`, `baitap`) VALUES
-('DAPTTK', 'Đồ án phân tích thiết kế hệ thống thông tin', 'LTWEB', 2, 35, 0, 0, 35, 0),
-('KDCL', 'Kiểm định chất lượng thực phẩm', 'KDCLSP', 2, 35, 15, 15, 0, 5),
-('KNGT', 'Kỹ năng giao tiếp', 'LTWEB', 2, 35, 5, 20, 0, 10),
-('KTTP', 'Kỹ thuật thực phẩm', 'PTVSTP', 2, 35, 0, 15, 5, 15),
-('LTUDWB', 'Lý thuyết lập trình website', 'LTWEB', 2, 35, 0, 15, 5, 15),
-('LTUDWD', 'Lập trình ứng dụng windows', 'LTWIN', 2, 35, 0, 15, 5, 15),
-('OSS', 'Open Source Software', 'LTWEB', 2, 35, 15, 15, 0, 5),
-('PPLST', 'Phương pháp luận sáng tạo', 'LTWIN', 2, 35, 0, 20, 0, 15),
-('PTTKHT', 'Phân tích thiết kế hệ thông thông tin', 'LTWEB', 2, 35, 0, 35, 0, 0),
-('SHVS', 'Hóa học vi sinh', 'KTBQTP', 2, 35, 0, 15, 5, 15);
+INSERT INTO `monhoc` (`mamh`, `tenmh`, `manganh`, `hocky`, `tinchi`, `sotiet`, `thuchanh`, `lythuyet`, `doan`, `baitap`) VALUES
+('DAPTTK', 'Đồ án phân tích thiết kế hệ thống thông tin', 'LTWEB', 1, 2, 35, 0, 0, 35, 0),
+('KDCL', 'Kiểm định chất lượng thực phẩm', 'KDCLSP', 2, 2, 35, 15, 15, 0, 5),
+('KNGT', 'Kỹ năng giao tiếp', 'LTWEB', 3, 2, 35, 5, 20, 0, 10),
+('KTTP', 'Kỹ thuật thực phẩm', 'PTVSTP', 1, 2, 35, 0, 15, 5, 15),
+('LTUDWB', 'Lý thuyết lập trình website', 'LTWEB', 4, 2, 35, 0, 15, 5, 15),
+('LTUDWD', 'Lập trình ứng dụng windows', 'LTWIN', 5, 2, 35, 0, 15, 5, 15),
+('OSS', 'Open Source Software', 'LTWEB', 5, 2, 35, 15, 15, 0, 5),
+('PPLST', 'Phương pháp luận sáng tạo', 'LTWIN', 5, 2, 35, 0, 20, 0, 15),
+('PTTKHT', 'Phân tích thiết kế hệ thông thông tin', 'LTWEB', 5, 2, 35, 0, 35, 0, 0),
+('SHVS', 'Hóa học vi sinh', 'KTBQTP', 4, 2, 35, 0, 15, 5, 15);
 
 -- --------------------------------------------------------
 
@@ -254,8 +254,34 @@ CREATE TABLE IF NOT EXISTS `sinhvien` (
 --
 
 INSERT INTO `sinhvien` (`mssv`, `pass`, `hoten`, `gt`, `quequan`, `noio`, `manv`, `sothich`, `avt`, `email`, `sdt`, `manganh`, `makhoa`, `covanht`) VALUES
-('CD12345678', '12345678', 'Nguyễn Thế Mạnh', 'Nam', 'Quỳ Hợp, Nghệ An', 'C5 Phạm Hùng, Bình Chánh, TP Hồ Chí Minh', 'NV12345678', 'NNAT, Guitar, Computer,Cat, nomore', NULL, 'hoangtupro.a4@gmail.com', 966173668, 'LTWEB', 'CNTT', 'GV12345678'),
-('DH87654321', '87654321', 'Nguyễn Ngọc Anh Thư', 'Nữ', 'Lấp Vò, Đồng Tháp', '159/9 Đặng chất, p2, q8, TP Hồ Chí Minh', 'NV87654321', 'Mèo, màu hồng, ts thái xanh ', NULL, NULL, 1677435879, 'KDCLSP', 'CNTT', 'GV87654321');
+('CD12345678', '12345678', 'Nguyễn Thế Mạnh', 'Nam', 'Quỳ Hợp, Nghệ An', 'C5 Phạm Hùng, Bình Chánh, TP Hồ Chí Minh', 'NV12345678', 'Thư mèo', NULL, 'Mèo.Thư@anhthu.com', 1677435879, 'LTWEB', 'CNTT', 'GV12345678'),
+('DH87654321', '87654321', 'Nguyễn Ngọc Anh Thư', 'Nữ', 'Lấp Vò, Đồng Tháp', '159/9 Đặng chất, p2, q8, TP Hồ Chí Minh', 'NV87654321', 'Ho Chi Minh', 'Array', 'hoangtupro.a4@gmail.com', 966173668, 'KDCLSP', 'CNTP', 'GV87654321');
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `v_dangky`
+-- (See below for the actual view)
+--
+DROP VIEW IF EXISTS `v_dangky`;
+CREATE TABLE IF NOT EXISTS `v_dangky` (
+`mssv` varchar(10)
+,`mamh` varchar(10)
+,`tenmh` varchar(50)
+,`manganh` varchar(10)
+,`tinchi` int(2)
+,`thuchanh` int(2)
+,`lythuyet` int(2)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `v_dangky`
+--
+DROP TABLE IF EXISTS `v_dangky`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_dangky`  AS  select `dangky`.`mssv` AS `mssv`,`dangky`.`mamh` AS `mamh`,`monhoc`.`tenmh` AS `tenmh`,`monhoc`.`manganh` AS `manganh`,`monhoc`.`tinchi` AS `tinchi`,`monhoc`.`thuchanh` AS `thuchanh`,`monhoc`.`lythuyet` AS `lythuyet` from (`dangky` join `monhoc` on((`dangky`.`mamh` = `monhoc`.`mamh`))) ;
 
 --
 -- Constraints for dumped tables

@@ -1,5 +1,19 @@
 <?php
-include "config/select.php";
+if (!isset($_SESSION)) 
+  {
+    session_start();
+  }
+
+if (isset($_SESSION['user'])) {
+  
+  $tennd=$_SESSION['user'];
+}
+else
+{  
+  header('Location: index.php');
+}
+
+include 'config/select.php';
 ?>
 <!doctype html>
 <html>
@@ -52,12 +66,37 @@ include "config/select.php";
     <div id="noidung">
     <table style="font-size:14px">
         <form action="updatesv.php" method="post" enctype="multipart/form-data" >
-                <tr><td colspan="2"><div class="khungavt"><img src="<?php echo $hinh=selecthinh('avt','sinhvien','MSSV');?>"></div></td></tr>
-                <tr><td colspan="2"><input type="file" name="editavt" value="Đổi avatar"></td></tr>
-                <tr><td>Họ và tên: </td><td><?php echo $hoten=select('hoten','sinhvien','MSSV');?></td></tr>
-                <tr><td>Giới tính: </td><td><?php echo $gt=select('gt','sinhvien','MSSV');?></td></tr>
-                <tr><td>Quê quán: </td><td><?php echo $qq=select('quequan','sinhvien','MSSV');?></td></tr>
-                <tr><td>Nơi ở hiện tại: </td><td><?php echo $noio=select('noio','sinhvien','MSSV');?></td></tr>
+      <?php
+                $data = select("*", "sinhvien", 'MSSV', $tennd);
+      ?>
+                <tr>
+                  <td colspan="2">
+                    <div class="khungavt">
+                      <img src="<?php 
+                        if($data['avt']=='')
+                        {
+                          if($data['gt']=="Nam")
+                          {
+                            echo 'image/nam.png';
+                          }
+                          else
+                          {
+                            echo 'image/nu.jpg';
+                          }
+                        }
+                        else
+                        {
+                          echo $data['avt'];
+                        }
+                      ?>">
+                    </div>
+                  </td>
+                 </tr>
+                <tr><td>Họ và tên: </td><td><?php echo $data['hoten'];?></td></tr>
+                <tr><td>Giới tính: </td><td><?php echo $data['gt'];?></td></tr>
+                <tr><td>Quê quán: </td><td><?php echo $data['quequan'];?></td></tr>
+                <tr><td>Nơi ở hiện tại: </td><td><?php echo $data['noio'];?></td></tr>
+
                 <tr ><td>Sở thích: </td><td><input type="text" name="st"></td></tr> 
                 <tr ><td>Email: </td><td><input type="text" name="email"></td></tr> 
                 <tr ><td>Số điện thoại: </td><td><input type="text" name="sdt"></td></tr> 
