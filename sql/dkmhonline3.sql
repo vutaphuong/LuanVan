@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Dec 02, 2017 at 08:15 AM
+-- Generation Time: Dec 06, 2017 at 01:36 PM
 -- Server version: 5.7.19
 -- PHP Version: 5.6.31
 
@@ -41,15 +41,16 @@ CREATE TABLE IF NOT EXISTS `dangky` (
   KEY `mssv` (`mssv`),
   KEY `manv` (`manv`),
   KEY `magv` (`magv`)
-) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `dangky`
 --
 
 INSERT INTO `dangky` (`madk`, `ngaydk`, `mssv`, `mamh`, `manv`, `magv`) VALUES
-(42, '2017-11-29', 'CD12345678', 'DAPTTK', NULL, NULL),
-(43, '2017-11-29', 'CD12345678', 'LTUDWB', NULL, NULL);
+(44, '2017-12-06', 'DH87654321', 'KDCL', NULL, NULL),
+(54, '2017-12-06', 'CD12345678', 'KNGT', NULL, NULL),
+(55, '2017-12-06', 'CD12345678', 'OSS', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -254,8 +255,9 @@ CREATE TABLE IF NOT EXISTS `sinhvien` (
 --
 
 INSERT INTO `sinhvien` (`mssv`, `pass`, `hoten`, `gt`, `quequan`, `noio`, `manv`, `sothich`, `avt`, `email`, `sdt`, `manganh`, `makhoa`, `covanht`) VALUES
-('CD12345678', '12345678', 'Nguyễn Thế Mạnh', 'Nam', 'Quỳ Hợp, Nghệ An', 'C5 Phạm Hùng, Bình Chánh, TP Hồ Chí Minh', 'NV12345678', 'Thư mèo', NULL, 'Mèo.Thư@anhthu.com', 1677435879, 'LTWEB', 'CNTT', 'GV12345678'),
-('DH87654321', '87654321', 'Nguyễn Ngọc Anh Thư', 'Nữ', 'Lấp Vò, Đồng Tháp', '159/9 Đặng chất, p2, q8, TP Hồ Chí Minh', 'NV87654321', 'Ho Chi Minh', 'Array', 'hoangtupro.a4@gmail.com', 966173668, 'KDCLSP', 'CNTP', 'GV87654321');
+('CD12345678', '12345678', 'Nguyễn Thế Mạnh', 'Nam', 'Quỳ Hợp, Nghệ An', 'C5 Phạm Hùng, Bình Chánh, TP Hồ Chí Minh', 'NV12345678', 'Anh Thư mèo', NULL, 'AnhThuMeo@meothu.com', 1677435879, 'LTWEB', 'CNTT', 'GV87654321'),
+('DH51400668', 'DH51400668', 'Nguyen The Manh Thu', 'Nam', 'Dong Thap', 'p2. Q8, TP HCM', 'NV12345678', NULL, NULL, NULL, NULL, 'KDCLSP', 'CNTP', 'GV12345678'),
+('DH87654321', '87654321', 'Nguyễn Ngọc Anh Thư', 'Nữ', 'Lấp Vò, Đồng Tháp', '159/9 Đặng chất, p2, q8, TP Hồ Chí Minh', 'NV87654321', 'mèo, màu hồng', 'Array', 'meo.thu@thumeo.com', 1677435879, 'KDCLSP', 'CNTP', 'GV87654321');
 
 -- --------------------------------------------------------
 

@@ -1,4 +1,5 @@
 <?php
+  ob_start() ;
 if (!isset($_SESSION)) 
   {
     session_start();
@@ -55,7 +56,7 @@ include 'config/select.php';
     <div id="menutrai">
     <ul>
     <li class="hvr-sweep-to-right hvr-ripple-out"><a href="trangchu.php">Trang chủ</a></li>
-    <li class="hvr-sweep-to-right hvr-ripple-out"><a>Thông báo ĐKMH</a></li>
+    <li class="hvr-sweep-to-right hvr-ripple-out"><a href="thongtindangky.php">Thông tin đăng ký</a></li>
     <li class="hvr-sweep-to-right hvr-ripple-out"><a>Quy định ĐKMH</a></li>
     <li class="hvr-sweep-to-right hvr-ripple-out"><a href="dangkymonhoc.php">Đăng ký môn học</a></li>
     <li class="hvr-sweep-to-right hvr-ripple-out"><a>Thông báo học phí</a></li>
@@ -108,6 +109,8 @@ include 'config/select.php';
   DESIGN by Nguyễn Thế Mạnh &amp; Vũ Tá Phương
   </td></tr></table>
   </div>
-            
+       <?php
+              ob_end_flush();
+            ?>     
 </body>
 </html>

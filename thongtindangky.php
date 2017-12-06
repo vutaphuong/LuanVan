@@ -50,7 +50,7 @@ spl_autoload_register("loadClass");
     <div id="menutrai">
     <ul>
     <li class="hvr-sweep-to-right hvr-ripple-out"><a href="trangchu.php">Trang chủ</a></li>
-    <li class="hvr-sweep-to-right hvr-ripple-out"><a>Thông báo ĐKMH</a></li>
+    <li class="hvr-sweep-to-right hvr-ripple-out"><a href="thongtindangky.php">Thông tin đăng ký</a></li>
     <li class="hvr-sweep-to-right hvr-ripple-out"><a>Quy định ĐKMH</a></li>
     <li class="hvr-sweep-to-right hvr-ripple-out"><a href="dangkymonhoc.php">Đăng ký môn học</a></li>
     <li class="hvr-sweep-to-right hvr-ripple-out"><a>Thông báo học phí</a></li>
@@ -58,12 +58,12 @@ spl_autoload_register("loadClass");
     </ul>
     </div>
     <div id="noidung">
-      <p style="margin-left: 100px" >Thông tin đăng ký của bạn</p>
-      <table border="1" style="border-style: inset; border-color: red; margin-left: 100px;" cellspacing="" ="0">
+      <table border="1" style="border-style: inset; border-color: red; margin-left: 60px;" cellspacing="" ="0">
+        <tr><td colspan="7" style="text-align: center; color: #177619;font-size: 30px;">Thông tin đăng ký của bạn</td></tr>
       <tr style="text-align: center; color: blue; font-weight: bold;">
         <td>STT</td>
         <td>Mã môn học</td>
-        <td>Tên môn học</td>
+        <td style="width: 290px">Tên môn học</td>
         <td>Mã ngành</td>
         <td>Tín chỉ</td>
         <td>Số tiết thực hành</td>
@@ -78,7 +78,7 @@ spl_autoload_register("loadClass");
         <tr>
           <td  style="text-align: center;"><?php echo $i?></td>
           <td><?php echo $row['mamh'] ?></td>
-          <td><?php echo $row['tenmh'] ?></td>
+          <td style="width: 290px"><?php echo $row['tenmh'] ?></td>
           <td><?php echo $row['manganh'] ?></td>
           <td style="text-align: center;"><?php echo $row['tinchi'] ?></td>
           <td style="text-align: center;"><?php echo $row['thuchanh'] ?></td>
@@ -100,6 +100,8 @@ spl_autoload_register("loadClass");
   DESIGN by Nguyễn Thế Mạnh &amp; Vũ Tá Phương
   </td></tr></table>
   </div>
-            
+         <?php
+              ob_end_flush();
+            ?>      
 </body>
 </html>

@@ -66,6 +66,8 @@
   DESIGN by Nguyễn Thế Mạnh &amp; Vũ Tá Phương
   </td></tr></table>
   </div>
-            
+ <?php
+              ob_end_flush();
+            ?>           
 </body>
 </html>

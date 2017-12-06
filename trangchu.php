@@ -1,5 +1,5 @@
-
 <?php
+ob_start() ;
 if (!isset($_SESSION)) 
   {
     session_start();
@@ -23,8 +23,6 @@ if (!isset($_SESSION['user'])) {
      <link href="css/magic.css" rel="stylesheet">
      <link href="css/logoheader.css" rel="stylesheet">
      <link href="css/dinhdangnut.css" rel="stylesheet">
-     <!--<link href="css/Untitled-3.css" rel="stylesheet">-->
-
 <script language=JavaScript>
     var txt=" Đăng ký môn học STUonline";
     var expert=500;
@@ -54,7 +52,7 @@ if (!isset($_SESSION['user'])) {
     <div id="menutrai">
     <ul>
     <li class="hvr-sweep-to-right hvr-ripple-out"><a href="trangchu.php">Trang chủ</a></li>
-    <li class="hvr-sweep-to-right hvr-ripple-out"><a>Thông báo ĐKMH</a></li>
+    <li class="hvr-sweep-to-right hvr-ripple-out"><a href="thongtindangky.php">Thông tin đăng ký</a></li>
     <li class="hvr-sweep-to-right hvr-ripple-out"><a>Quy định ĐKMH</a></li>
     <li class="hvr-sweep-to-right hvr-ripple-out"><a href="dangkymonhoc.php">Đăng ký môn học</a></li>
     <li class="hvr-sweep-to-right hvr-ripple-out"><a>Thông báo học phí</a></li>
@@ -72,6 +70,8 @@ if (!isset($_SESSION['user'])) {
   DESIGN by Nguyễn Thế Mạnh &amp; Vũ Tá Phương
   </td></tr></table>
   </div>
-            
+           <?php
+              ob_end_flush();
+            ?>    
 </body>
 </html>

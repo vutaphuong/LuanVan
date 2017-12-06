@@ -3,7 +3,7 @@ define("DB_NAME", "dkmhonline");
 define("DB_USER", "root");
 define("DB_PASS", "");
 define('ROOT', dirname(dirname(__FILE__)));
-define("BASE_URL","http://localhost/tao%20lao/");
+define("BASE_URL","/storage/ssd1/550/3166550/public_html/");
 $obj = null;
 try{
     $dsn="mysql:localhost=".HOST."; dbname=".DB_NAME;

@@ -37,6 +37,10 @@
 </head>
 <body > 
 	<?php
+    $obj1=new Db();
+    $rowskhoa=$obj1->select('select tenkhoa from khoa');
+    $rowsnganh=$obj1->select('select tennganh from nganh');    
+    $rowscvht=$obj1->select('select hoten from giangvien');
 		if(isset($_POST['sm']))
 		{
 			$mssv = $_POST["mssv"];
@@ -44,10 +48,30 @@
 			$gt = $_POST["gt"];
 			$quequan = $_POST["quequan"];
 			$noio = $_POST["noio"];
-			$makhoa = $_POST["makhoa"];
-			$manganh = $_POST["manganh"];
-			$magv = $_POST["magv"];
-
+      if(isset($_POST['tenkhoa']))
+      {
+        $tenkhoa=$_POST['tenkhoa'];
+        $khoa=$obj1->select("select makhoa from khoa where tenkhoa='$tenkhoa'");
+        foreach ($khoa as $getmakhoa) {
+          $makhoa=$getmakhoa['makhoa'];
+        }
+      }
+      if(isset($_POST['tenkhoa']))
+      {
+        $tennganh=$_POST['tennganh'];
+        $nganh=$obj1->select("select manganh from nganh where tennganh='$tennganh'");
+        foreach ($nganh as $getmanganh) {
+          $manganh=$getmanganh['manganh'];
+        }
+      }
+      if(isset($_POST['tengv']))
+      {
+        $tengv=$_POST['tengv'];
+        $covanht=$obj1->select("select magv from giangvien where hoten='$tengv'");
+        foreach ($covanht as $getcovanht) {
+          $magv=$getcovanht['magv'];
+        }
+      }
 			$obj = new Db()	;
 	   		$rows=$obj->insert("INSERT INTO `sinhvien` (`mssv`, `pass`, `hoten`, `gt`, `quequan`, `noio`, `manv`, `sothich`, `avt`, `email`, `sdt`, `manganh`, `makhoa`, `covanht`) 
 	   			VALUES ('$mssv','$mssv', '$hoten', '$gt', '$quequan', '$noio', '$tennd', NULL, NULL, NULL, NULL, '$manganh', '$makhoa', '$magv')");
@@ -61,6 +85,7 @@
      </table>  
    </div>   
    <form action="themsinhvien.php" method="post">
+        <input class="vien" type="hidden" name="manv">
    		<table align="center" style="margin: 0 auto;">
    		<tr>
    		<td colspan="2" align="center" style="color: blue;font-size: 30px;">Thêm sinh viên</td>
@@ -80,17 +105,7 @@
    			<tr>
    				<td class="nvnhap">Quê quán</td>
    				<td>
-	   				<select name="quequan" style="width: 294px;height: 30px">
-	   					<option>Chọn quê quán của Sinh viên</option>
-	   					<option>Hà Nội</option>
-	   					<option>Thái Bình</option>
-	   					<option>Quảng Bình</option>
-	   					<option>Thanh Hóa</option>
-	   					<option>Huế</option>
-	   					<option>Thái Nguyên</option>
-	   					<option>Lâm Đồng</option>
-	   					<option>Đăk Nông</option>
-	   				</select>
+	   				<input class="vien" type="text" name="quequan" size="40px" placeholder="Nhập quê quán của sinh viên" required>
 	   			</td>
    			</tr>
    			<tr>
@@ -99,42 +114,53 @@
    			</tr>
    			<tr>
    				<td class="nvnhap">Mã nhân viên</td>
-   				<td>
-	   				<select name="manv" style="width: 294px;height: 30px">
-	   					<option>Chọn mã Nhân viên</option>
-	   					<option>NV12345678</option>
-	   					<option>NV87654321</option>
-	   				</select>
-	   			</td>
+	   				
    			</tr>
    			<tr>
-   				<td class="nvnhap">Mã khoa</td>
+   				<td class="nvnhap">Khoa</td>
    				<td>
-	   				<select name="makhoa" style="width: 294px;height: 30px">
-	   					<option>Chọn mã Khoa</option>
-	   					<option>CNTT</option>
-	   					<option>CNTP</option>
+	   				<select name="tenkhoa" style="width: 294px;height: 30px">
+	   					<option>Chọn Khoa</option>
+              <?php 
+                foreach($rowskhoa as $khoa)
+                {
+               ?>
+	   					   <option><?php echo $khoa['tenkhoa']?></option>
+  	   				<?php
+               }
+              ?>
 	   				</select>
    				</td>
    			</tr>
    			<tr>
-   				<td class="nvnhap">Mã nghành</td>
+   				<td class="nvnhap">Ngành</td>
    				<td>
-   					<select name="manganh" style="width: 294px;height: 30px">
-   						<option>Chọn mã Nghành</option>
-   						<option>KDCLSP</option>
-   						<option>KTBQTP</option>
-   						<option>LTAND</option>
+   					<select name="tennganh" style="width: 294px;height: 30px">
+   						<option>Chọn Ngành</option>
+                <?php 
+                foreach($rowsnganh as $nganh)
+                {
+               ?>
+                 <option><?php echo $nganh['tennganh']?></option>
+              <?php
+               }
+              ?>
    					</select>
    				</td>
    			</tr>
    			<tr>
-   				<td class="nvnhap">Mã giảng viên</td>
+   				<td class="nvnhap">Cố vấn học tập</td>
    				<td>
-   					<select name="magv" style="width: 294px;height: 30px" required>
+   					<select name="tengv" style="width: 294px;height: 30px" required>
    						<option>Chọn mã Giảng viên</option>
-   						<option>GV12345678</option>
-   						<option>GV87654321</option>
+   						<?php 
+                foreach($rowscvht as $cvht)
+                {
+               ?>
+                 <option><?php echo $cvht['hoten']?></option>
+              <?php
+               }
+              ?>
    					</select>
    				</td>
    			</tr>
@@ -144,34 +170,6 @@
    		</table>
    </form>
    			 <?php
-      //       	try{
-      //       		$pdh = new PDO("mysql:host=localhost;dbname=dkmhonline","root","");
-      //       		$pdh->query(" set names 'utf8' ");
-      //       	}
-      //       	catch(Exception $e){
-      //       		echo $e->getMessage(); exit;
-            	//}
-            	// if(isset($_POST["sm"]))
-            	// {
-            	// 	$sql="insert into sinhvien(mssv,hoten,gt,quequan,manv,makhoa,manganh,covanht) values(:mssv,:hoten,:gt,:quequan,:manv,:makhoa,:manganh,:covanht)";
-            	// 	$arr = array(":mssv"=>$_POST["mssv"],":hoten"=>$_POST["hoten"],":gt"=>$_POST["gt"],":quequan"=>$_POST["quequan"],":manv"=>$_POST["manv"],":makhoa"=>$_POST["makhoa"],":manganh"=>$_POST["manganh"],":covanht"=>$_POST["covanht"]);
-
-            	// 	print_r($arr);
-
-            	// 	$stm = $pdh->prepare($sql);
-            	// 	$stm->execute($arr);
-            	// 	$n = $stm->rowCount();
-
-            	// 	print_r($stm);
-            	// 	print_r($n);
-
-            	// 	if($n>0) 
-            	// 	{
-            	// 		echo "Đã thêm $n sinh viên";
-            	// 	}
-            	// 	else 
-            	// 		echo "Lỗi! Không thêm được sinh viên";
-            	// }
             	$obj = new Db();
                $rows=$obj->select("select * from sinhvien");
             ?>
@@ -185,10 +183,10 @@
 	            	<td align="center">Giới tính</td>
 	            	<td align="center">Quê quán</td>
                 <td align="center">Nơi ở</td>
-	            	<td align="center">Mã Nhân viên</td>
-	            	<td align="center">Mã nghành</td>
-	            	<td align="center">Mã khoa</td>
-	            	<td align="center">Mã giảng viên</td>
+	            	<td align="center">Người thêm</td>
+	            	<td align="center">Nghành</td>
+	            	<td align="center">Khoa</td>
+	            	<td align="center">Cố vấn học tập</td>
 	            	<td align="center">Chức năng</td>
                 </tr>
                 	<?php
@@ -201,15 +199,44 @@
 	                		<td align="center"><?php echo $row["gt"] ?></td>
 	                		<td><?php echo $row["quequan"]?></td>
                       <td><?php echo $row["noio"]?></td>
-	                		<td><?php echo $row["manv"] ?></td>
-	                		<td align="center"><?php echo $row["manganh"] ?></td>
-	                		<td align="center"><?php echo $row["makhoa"] ?></td>
+	                		<td>
+                        <?php
+                          $showmanv=$row["manv"];
+                          $showtennv=$obj->select("select hoten from nhanvien where manv='$showmanv'");
+                          foreach ($showtennv as $show) 
+                          {
+                            echo $show['hoten'];
+                          }
+                        ?>
+                        </td>
+	                		<td>
+                        <?php
+                          $showmanganh=$row["manganh"];
+                          $showtennganh=$obj->select("select tennganh from nganh where manganh='$showmanganh'");
+                          foreach ($showtennganh as $show) 
+                          {
+                            echo $show['tennganh'];
+                          }
+                        ?></td>
+	                		<td>
+                        <?php
+                          $showmakhoa=$row["makhoa"];
+                          $showtenkhoa=$obj->select("select tenkhoa from khoa where makhoa='$showmakhoa'");
+                          foreach ($showtenkhoa as $show) 
+                          {
+                            echo $show['tenkhoa'];
+                          }
+                        ?></td>
 	                		<td><?php echo $row["covanht"] ?></td>
-	                		<td><a href="kiemtraduyet.php?mssv=<?php echo $row["mssv"];?>">Xóa <a href="chinhsuasv.php?mssv=<?php echo $row['mssv'];?>">Chỉnh sửa</a></td>
+	                		<td> <a href="chinhsuasv.php?mssv=<?php echo $row['mssv'];?>">Chỉnh sửa</a>
+                        &nbsp<a href="kiemtraduyet.php?mssv=<?php echo $row["mssv"];?>">Xóa</a></td>
                 		</tr>
                 	<?php
                 	}
                 	?>
               </table>
+              <?php
+              ob_end_flush();
+            ?>
 </body>
 </html>

@@ -3,9 +3,6 @@
 #header
 {
 	position:absolute;
-	background-color: rgba(192,192,192,1);
-	margin-left:36%;	
-	border-radius:20PX;
 }
 #menutrai
 {
@@ -89,6 +86,10 @@ td a
 	text-decoration: none;
 	color: blue;
 	font-size: 30px;
+}
+.rs:focus
+{
+	outline: none;
 }
 
 

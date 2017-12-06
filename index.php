@@ -1,12 +1,11 @@
 <?php
-if (!isset($_SESSION)) 
-  {
-    session_start();
-  }
-
-include 'config/select.php';
+	ob_start() ;
+	if (!isset($_SESSION)) 
+	  {
+	    session_start();
+	  }
+	include 'config/select.php';
 ?>
-<!doctype html>
 <html>
 <head><meta http-equiv="content-type" content="text/html;charset=utf-8"/>
 
@@ -53,12 +52,12 @@ include 'config/select.php';
                 $_SESSION['user']=$_POST["tendn"];
                 header('Location: trangchu.php');                
             }
-            elseif ($num_rowsnv!=0) 
+            if ($num_rowsnv!=0) 
             {
                 $_SESSION['user']=$_POST["tendn"];
                 header('Location: quanlythongtin.php');                
             }
-            elseif ($num_rowsgv!=0) 
+            if ($num_rowsgv!=0) 
             {
                 $_SESSION['user']=$_POST["tendn"];
                 header('Location: xemlichday.php');                
@@ -101,6 +100,7 @@ include 'config/select.php';
             $baoloiten='';
             $baoloipw='';
         }
+        ob_end_flush();
     ?>
     <table align="center" class="tb">
         <tr class="logo"><td class="logophai stu1">S</td><td class="logotrai stu2">T</td><td class="logophai stu1">U</td><td class="logotrai">o</td><td class="logophai">n</td><td class="logotrai">l</td><td class="logophai">i</td><td class="logotrai">n</td><td class="logophai">e</td></tr>

@@ -1,14 +1,6 @@
 
 <?php
-if (!isset($_SESSION)) 
-  {
-    session_start();
-  }
-
-if (!isset($_SESSION['tenuser'])) {
-  
- //header('Location: index.php');
-}
+include 'config/kiemtra_SESION.php';
 ?>
 <!doctype html>
 <html>
@@ -68,6 +60,8 @@ if (!isset($_SESSION['tenuser'])) {
   DESIGN by Nguyễn Thế Mạnh &amp; Vũ Tá Phương
   </td></tr></table>
   </div>
-            
+           <?php
+              ob_end_flush();
+            ?>  
 </body>
 </html>

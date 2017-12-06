@@ -1,4 +1,5 @@
 <?php
+  ob_start() ;
 if (!isset($_SESSION)) 
   {
     session_start();
@@ -55,10 +56,10 @@ include 'config/select.php';
     <div id="thanweb">
     <div id="menutrai">
     <ul>
-    <li class="hvr-sweep-to-right hvr-ripple-out"><a>Trang chủ</a></li>
-    <li class="hvr-sweep-to-right hvr-ripple-out"><a>Thông báo ĐKMH</a></li>
+    <li class="hvr-sweep-to-right hvr-ripple-out"><a href="trangchu.php">Trang chủ</a></li>
+    <li class="hvr-sweep-to-right hvr-ripple-out"><a href="thongtindangky.php">Thông tin đăng ký</a></li>
     <li class="hvr-sweep-to-right hvr-ripple-out"><a>Quy định ĐKMH</a></li>
-    <li class="hvr-sweep-to-right hvr-ripple-out"><a>Đăng ký môn học</a></li>
+    <li class="hvr-sweep-to-right hvr-ripple-out"><a href="dangkymonhoc.php">Đăng ký môn học</a></li>
     <li class="hvr-sweep-to-right hvr-ripple-out"><a>Thông báo học phí</a></li>
     <li class="hvr-sweep-to-right hvr-ripple-out"><a href="thongtin.php">Thông tin cá nhân</a></li>
     </ul>
@@ -92,6 +93,7 @@ include 'config/select.php';
                     </div>
                   </td>
                  </tr>
+                 <tr><td colspan="2" align="center"><input type="file" name="suaavt"></td></tr>
                 <tr><td>Họ và tên: </td><td><?php echo $data['hoten'];?></td></tr>
                 <tr><td>Giới tính: </td><td><?php echo $data['gt'];?></td></tr>
                 <tr><td>Quê quán: </td><td><?php echo $data['quequan'];?></td></tr>
@@ -112,6 +114,8 @@ include 'config/select.php';
   DESIGN by Nguyễn Thế Mạnh &amp; Vũ Tá Phương
   </td></tr></table>
   </div>
-            
+      <?php
+              ob_end_flush();
+            ?>      
 </body>
 </html>
