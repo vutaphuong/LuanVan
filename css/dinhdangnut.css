@@ -3,6 +3,7 @@
 #header
 {
 	position:absolute;
+	padding-left: 36%;
 }
 #menutrai
 {
@@ -29,15 +30,16 @@
 	height: 150px;
 	text-align: center;
 	float: left;
+	text-decoration: none;
 }
 
-ul
+#menutrai ul
 {
 	text-align: center;
 	list-style-type:none;
 	text-align: center;
 }
-li 
+#menutrai li 
 {
 	line-height:17px;
 	border-color:#0F3;
@@ -48,13 +50,29 @@ li
 	padding-top:10px;
 	display: inline-block;
 }
-li a
+#menutrai li a
 {	
 	text-decoration: none;
-	color: inherit;
+	color: blue;
+	font-size: 18px;
 }
 #noidung
 {		
+	padding-left:10%;
+	float: left;
+}
+#noidungfooter
+{
+	padding-left:20%;
+	float: left;
+}
+#noidungthongtindky
+{
+	padding-left:7%;
+	float: left;
+}
+#noidungdkmhsv
+{
 	padding-left:17%;
 	float: left;
 }
@@ -81,15 +99,135 @@ li a
 	font-family: 'Comic Sans MS';
 	color: blue;
 }
-td a
-{
-	text-decoration: none;
-	color: blue;
-	font-size: 30px;
-}
 .rs:focus
 {
 	outline: none;
 }
+td a
+{
+	text-decoration: none;
+	color: #FF0000;
+}
+#formthemsv
+{
+	padding-top: 100px;
+}
+.nvnhap
+{
+	font-size: 20px;
+}
+.rs
+{
+	border-radius: 5px;
+	background-color: #CCFF66;
+	height: 30px;
+	width: 90px;
+	font-size: 15px;
+	color: blue;
+	font-weight: bold;
+}
+.vien
+{
+	height: 25px;
+	border-radius: 5px;
+	font-size: 15px;
+}
+.gt1
+{
+	width: 18px;
+	height: 18px;
+}
+.gt2
+{
+	font-size: 18px;
+}
+.gui
+{
+	border-radius: 5px;
+	background-color: #CCFF66;
+	height: 30px;
+	width: 90px;
+	font-size: 15px;
+	color: blue;
+	font-weight: bold;
+}
+.option
+{
+	font-size: 15px;
+}
+.formsinhvien1
+{
+	font-size: 20px;
+	color: blue;
+}
+.formsinhvien2
+{
+	font-size: 20px;
+	color: black;
+}
+.linkchinhsua
+{
+	text-decoration: none;
+	color: black;
+	font-size: 20px;
+	font-weight: bold;
+}
+#xemthongtingv
+{
+	margin: 0 auto;
+}
+#xemttgv
+{
+	position:absolute;
+	padding-top: 100px;
+	padding-left: 14%;
+}
+.mainbox2
+{
+	margin-top: 7px;
+	margin-left: 23%;
+	float: left;
+	height: 400px;
+	width: 800px;
+	background-color: red;
+	background-color: #FFFFFF;
+	box-shadow: 0px 0px 50px #DBD2D2 inset;
+	border-radius: 20px;
+}
+#tieude2
+{
 
-
+	width: 100%;
+	height: 30px;
+	text-align: center;
+	color: ##2001FDFF;
+	font-weight: bold;
+	font-size: 30px;
+	background:	-webkit-linear-gradient(45deg, yellow,#80F2F9,#99FFFF);
+	border-radius: 200px 200px 0px 0px;
+}
+li a
+{
+	text-decoration: none;
+	font-size: 28px;
+	color: black;
+}
+.chuadkmh
+{
+	font-size: 100px;
+	color: red;
+}
+.backhome:focus
+{
+	outline: none;
+}
+.backhome
+{
+	border-radius: 5px;
+	background-color: #CCFF66;
+	height: 30px;
+	width: 150px;
+	font-size: 15px;
+	color: blue;
+	font-weight: bold;
+}

@@ -1,5 +1,5 @@
 <?php
-         include 'config.php';
+include 'config.php';
 function select($cot,$bang,$ma,$tennd)
 {
             $obj = null;
@@ -21,11 +21,13 @@ function select($cot,$bang,$ma,$tennd)
             $xuat=$mang[$cot];
             echo $xuat;
 }
-function dangnhap($bang,$ma,$m,$t)
+//$bang ten database, $mssv của database, $userid + $password tên tài khoản mật khẩu
+function dangnhap($bang,$mssv,$userid,$password)
 {
             $obj = null;
             try{
                 $dsn="mysql:localhost=".HOST."; dbname=".DB_NAME;
+                //echo $dsn;
                 $obj = new PDO($dsn, DB_USER, DB_PASS);
                 $obj->query("set names 'utf8' ");
                 }
@@ -33,9 +35,12 @@ function dangnhap($bang,$ma,$m,$t)
             {
                 echo $e->getMessage();  exit;
             }
-            $sql="SELECT $ma,pass FROM $bang WHERE $ma='$m' and pass='$t'"; 
+            $sql="SELECT $mssv, pass FROM $bang WHERE $mssv='$userid' and pass='$password' "; 
+            //echo $sql; exit;
+            //$data = $obj->query($sql);
             $data = $obj->prepare($sql);
             $data->execute();
+            //print_r($data->fetchAll(PDO::FETCH_ASSOC)); exit;
             $num_rows=$data->rowCount();
             return $num_rows;
 }

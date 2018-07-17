@@ -1,7 +1,7 @@
 <?php define("HOST", "localhost");
-define("DB_NAME", "dkmhonline");
-define("DB_USER", "root");
-define("DB_PASS", "");
+define("DB_NAME", "dkmhkhoacntt");
+define("DB_USER","root");
+define("DB_PASS","");
 define('ROOT', dirname(dirname(__FILE__)));
 define("BASE_URL","/storage/ssd1/550/3166550/public_html/");
 $obj = null;

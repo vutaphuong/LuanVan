@@ -67,7 +67,7 @@ class Db{
 
 		function getThongTinDangKy($tendn)
 			{
-				$sql="SELECT * from v_dangky where mssv='$tendn' ";
+				$sql="SELECT * from v_dangkytest where mssv='$tendn' ";
 				return $this->query($sql);	
 			}
 

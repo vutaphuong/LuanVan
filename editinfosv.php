@@ -1,20 +1,19 @@
 <?php
-  ob_start() ;
-if (!isset($_SESSION)) 
-  {
-    session_start();
+ob_start() ;
+  if (!isset($_SESSION)) 
+    {
+      session_start();
+    }
+  if (isset($_SESSION['user'])) {
+    
+    $tennd=$_SESSION['user'];
   }
+  else
+  {  
+    header('Location: index.php');
+  }
+include "config/select.php";
 
-if (isset($_SESSION['user'])) {
-  
-  $tennd=$_SESSION['user'];
-}
-else
-{  
-  header('Location: index.php');
-}
-
-include 'config/select.php';
 ?>
 <!doctype html>
 <html>
@@ -60,59 +59,64 @@ include 'config/select.php';
     <li class="hvr-sweep-to-right hvr-ripple-out"><a href="thongtindangky.php">Thông tin đăng ký</a></li>
     <li class="hvr-sweep-to-right hvr-ripple-out"><a>Quy định ĐKMH</a></li>
     <li class="hvr-sweep-to-right hvr-ripple-out"><a href="dangkymonhoc.php">Đăng ký môn học</a></li>
-    <li class="hvr-sweep-to-right hvr-ripple-out"><a>Thông báo học phí</a></li>
     <li class="hvr-sweep-to-right hvr-ripple-out"><a href="thongtin.php">Thông tin cá nhân</a></li>
+    <li class="hvr-sweep-to-right hvr-ripple-out"><a href="index.php">Đăng xuất</a></li>
     </ul>
     </div>
     <div id="noidung">
     <table style="font-size:14px">
         <form action="updatesv.php" method="post" enctype="multipart/form-data" >
       <?php
-                $data = select("*", "sinhvien", 'MSSV', $tennd);
+        $datasv = select("*", "sinhvien", 'mssv', $tennd);
+        $datasv1 = select("*", "chitietsv", 'mssv', $tennd);
       ?>
+          <tr>
+            <td colspan="2">
+              <div class="khungavt">
+              <img src="<?php 
+              if($datasv1['avata']=='')
+              {
+                if($datasv1['gioitinh']=="Nam")
+                {
+                  echo 'image/nam.png';
+                }
+                else
+                {
+                  echo 'image/nu.jpg';
+                }
+              }
+              else
+              {
+                echo $data['avata'];
+              }
+      ?>">
+              </div>
+                </td>
+                </tr>
+                <tr><td colspan="2" align="center"><input type="file" name="suaavt"></td></tr>
+                <tr><td class="formsinhvien1">Họ và tên: </td><td class="formsinhvien2"><?php echo $datasv['hoten'];?></td></tr>
+                <tr><td class="formsinhvien1">Giới tính: </td><td class="formsinhvien2"><?php echo $datasv1['gioitinh'];?></td></tr>
+                <tr ><td class="formsinhvien1">Quê quán: </td><td><input type="text" name="quequan" size="30px" placeholder="Nhập quê quán" ></td></tr>
+                <tr ><td class="formsinhvien1">Nơi ở hiện tại: </td><td><input type="text" name="noio" size="30px" placeholder="Nhập nơi ở sinh viên" ></td></tr>  
+                <tr ><td class="formsinhvien1">Sở thích: </td><td><input type="text" name="st" size="30px" placeholder="Nhập sở thích" ></td></tr> 
+                <tr ><td class="formsinhvien1">Email: </td><td><input type="text" name="email" size="30px" placeholder="Nhập email" ></td></tr> 
+                <tr ><td class="formsinhvien1">Số điện thoại: </td><td><input type="text" name="sdt" size="30px" placeholder="Nhập số điện thoại" ></td></tr> 
                 <tr>
-                  <td colspan="2">
-                    <div class="khungavt">
-                      <img src="<?php 
-                        if($data['avt']=='')
-                        {
-                          if($data['gt']=="Nam")
-                          {
-                            echo 'image/nam.png';
-                          }
-                          else
-                          {
-                            echo 'image/nu.jpg';
-                          }
-                        }
-                        else
-                        {
-                          echo $data['avt'];
-                        }
-                      ?>">
-                    </div>
-                  </td>
-                 </tr>
-                 <tr><td colspan="2" align="center"><input type="file" name="suaavt"></td></tr>
-                <tr><td>Họ và tên: </td><td><?php echo $data['hoten'];?></td></tr>
-                <tr><td>Giới tính: </td><td><?php echo $data['gt'];?></td></tr>
-                <tr><td>Quê quán: </td><td><?php echo $data['quequan'];?></td></tr>
-                <tr><td>Nơi ở hiện tại: </td><td><?php echo $data['noio'];?></td></tr>
-
-                <tr ><td>Sở thích: </td><td><input type="text" name="st"></td></tr> 
-                <tr ><td>Email: </td><td><input type="text" name="email"></td></tr> 
-                <tr ><td>Số điện thoại: </td><td><input type="text" name="sdt"></td></tr> 
-                <tr><td colspan="2"><input type="submit" name="submit" value="Lưu"></td></tr>
-            </form>
-              </table>
-            </div>
+                  <td ><input type="submit" name="submit" value="Lưu" size="30px" class="rs"></td>
+                  <td ><a href="thongtin.php"><input type="button" name="button" value="Thoát" size="30px" class="rs"></a></td>
+                </tr>
+          </form>
+        </table>
+      </div>
     </div>            
   </div>
   <!--Chân web -->
   <div id="footer">
-  <table align="center" style="padding-top:10px"><tr><td>
-  DESIGN by Nguyễn Thế Mạnh &amp; Vũ Tá Phương
-  </td></tr></table>
+  <table align="center" style="padding-top:10px">
+    <tr>
+      <td>DESIGN by Vũ Tá Phương &copy; 2018-<?php echo (date("Y")+1)?> </td>
+    </tr>
+  </table>
   </div>
       <?php
               ob_end_flush();

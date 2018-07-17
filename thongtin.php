@@ -13,8 +13,8 @@ else
 {  
   header('Location: index.php');
 }
+include "config/select.php";
 
-include 'config/select.php';
 ?>
 <!doctype html>
 <html>
@@ -54,27 +54,28 @@ include 'config/select.php';
     <div id="main">
     <div id="thanweb">
     <div id="menutrai">
-    <ul>
-    <li class="hvr-sweep-to-right hvr-ripple-out"><a href="trangchu.php">Trang chủ</a></li>
-    <li class="hvr-sweep-to-right hvr-ripple-out"><a href="thongtindangky.php">Thông tin đăng ký</a></li>
-    <li class="hvr-sweep-to-right hvr-ripple-out"><a>Quy định ĐKMH</a></li>
-    <li class="hvr-sweep-to-right hvr-ripple-out"><a href="dangkymonhoc.php">Đăng ký môn học</a></li>
-    <li class="hvr-sweep-to-right hvr-ripple-out"><a>Thông báo học phí</a></li>
-    <li class="hvr-sweep-to-right hvr-ripple-out"><a href="thongtin.php">Thông tin cá nhân</a></li>
-    </ul>
+      <ul>
+        <li class="hvr-sweep-to-right hvr-ripple-out"><a href="trangchu.php">Trang chủ</a></li>
+        <li class="hvr-sweep-to-right hvr-ripple-out"><a href="thongtindangky.php">Thông tin đăng ký</a></li>
+        <li class="hvr-sweep-to-right hvr-ripple-out"><a href="trangchu1.php">Quy định-Quy chế</a></li>
+        <li class="hvr-sweep-to-right hvr-ripple-out"><a href="dangkymonhoc.php">Đăng ký môn học</a></li>
+        <li class="hvr-sweep-to-right hvr-ripple-out"><a href="thongtin.php">Thông tin cá nhân</a></li>
+        <li class="hvr-sweep-to-right hvr-ripple-out"><a href="index.php">Đăng xuất</a></li>
+      </ul>
     </div>
     <div id="noidung">
     <table style="font-size:14px">
       <?php
-  $data = select("*", "sinhvien", 'MSSV', $tennd);
+        $datasv = select("*", "sinhvien", 'mssv', $tennd);
+        $datasv1 = select("*","chitietsv", 'mssv',$tennd);
       ?>
                 <tr>
                   <td colspan="2">
                     <div class="khungavt">
                       <img src="<?php 
-                        if($data['avt']=='')
+                        if($datasv1['avata']=='')
                         {
-                          if($data['gt']=="Nam")
+                          if($datasv1['gioitinh']=="Nam")
                           {
                             echo 'image/nam.png';
                           }
@@ -85,29 +86,33 @@ include 'config/select.php';
                         }
                         else
                         {
-                          echo $data['avt'];
+                          echo $datasv1['avata'];
                         }
                       ?>">
                     </div>
                   </td>
                  </tr>
-                <tr><td>Họ và tên: </td><td><?php echo $data['hoten'];?></td></tr>
-                <tr><td>Giới tính: </td><td><?php echo $data['gt'];?></td></tr>
-                <tr><td>Quê quán: </td><td><?php echo $data['quequan'];?></td></tr>
-                <tr><td>Nơi ở hiện tại: </td><td><?php echo $data['noio'];?></td></tr>
-                <tr><td>Sở thích: </td><td><?php echo $data['sothich'];?></td></tr>
-                <tr><td>Email: </td><td><?php echo $data['email'];?></td></tr>
-                <tr><td>Số điện thoại: </td><td>0<?php echo $data['sdt'];?></td></tr>
-                <tr><td colspan="2" ><a href="editinfosv.php" >Chỉnh sửa</a></td></tr>
+                <tr><td class="formsinhvien1">Mã số sinh viên: </td><td class="formsinhvien2"><?php echo $datasv['mssv']; ?></td></tr>
+                <tr><td class="formsinhvien1">Họ và tên: </td><td class="formsinhvien2"><?php echo $datasv['hoten'];?></td></tr>
+                <tr><td class="formsinhvien1">Ngày sinh: </td><td class="formsinhvien2"><?php echo $datasv1['ngaysinh'];?></td></tr>
+                <tr><td class="formsinhvien1">Giới tính: </td><td class="formsinhvien2"><?php echo $datasv1['gioitinh'];?></td></tr>
+                <tr><td class="formsinhvien1">Quê quán: </td><td class="formsinhvien2"><?php echo $datasv1['quequan'];?></td></tr>
+                <tr><td class="formsinhvien1">Nơi ở hiện tại: </td><td class="formsinhvien2"><?php echo $datasv1['noio'];?></td></tr>
+                <tr><td class="formsinhvien1">Sở thích: </td><td class="formsinhvien2"><?php echo $datasv1['sothich'];?></td></tr>
+                <tr><td class="formsinhvien1">Email: </td><td class="formsinhvien2"><?php echo $datasv1['email'];?></td></tr>
+                <tr><td class="formsinhvien1">Số điện thoại: </td><td class="formsinhvien2">0<?php echo $datasv1['sdt'];?></td></tr>
+                <tr><td class="linkchinhsua" colspan="2" ><a href="editinfosv.php" >Chỉnh sửa</a></td></tr>
               </table>
             </div>
     </div>            
   </div>
   <!--Chân web -->
   <div id="footer">
-  <table align="center" style="padding-top:10px"><tr><td>
-  DESIGN by Nguyễn Thế Mạnh &amp; Vũ Tá Phương
-  </td></tr></table>
+  <table align="center" style="padding-top:10px">
+    <tr>
+      <td>DESIGN by Vũ Tá Phương &copy; 2018-<?php echo (date("Y")+1)?> </td>
+    </tr>
+  </table>
   </div>
        <?php
               ob_end_flush();

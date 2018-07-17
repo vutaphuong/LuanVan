@@ -1,9 +1,9 @@
 <?php
-include 'config/kiemtra_SESION.php';
-include 'config/config.php';
-include "/include/function.php";
-
-spl_autoload_register("loadClass");
+  ob_start();
+  include 'config/kiemtra_SESION.php';
+  include 'config/config.php';
+  include 'classes/function.php';
+  spl_autoload_register("loadClass");
 ?>
 <!doctype html>
 <html>
@@ -51,23 +51,36 @@ spl_autoload_register("loadClass");
     <ul>
     <li class="hvr-sweep-to-right hvr-ripple-out"><a href="trangchu.php">Trang chủ</a></li>
     <li class="hvr-sweep-to-right hvr-ripple-out"><a href="thongtindangky.php">Thông tin đăng ký</a></li>
-    <li class="hvr-sweep-to-right hvr-ripple-out"><a>Quy định ĐKMH</a></li>
+    <li class="hvr-sweep-to-right hvr-ripple-out"><a href="trangchu1.php">Quy định-Quy chế</a></li>
     <li class="hvr-sweep-to-right hvr-ripple-out"><a href="dangkymonhoc.php">Đăng ký môn học</a></li>
-    <li class="hvr-sweep-to-right hvr-ripple-out"><a>Thông báo học phí</a></li>
     <li class="hvr-sweep-to-right hvr-ripple-out"><a href="thongtin.php">Thông tin cá nhân</a></li>
+    <li class="hvr-sweep-to-right hvr-ripple-out"><a href="index.php">Đăng xuất</a></li>
     </ul>
     </div>
-    <div id="noidung">
-      <table border="1" style="border-style: inset; border-color: red; margin-left: 60px;" cellspacing="" ="0">
-        <tr><td colspan="7" style="text-align: center; color: #177619;font-size: 30px;">Thông tin đăng ký của bạn</td></tr>
+    <div id="noidungthongtindky">
+      <table border="1" style="border-style: inset; border-color: red; margin-left:99px;" cellspacing="" ="0">
+        <?php 
+          if(empty($rows)) 
+        {
+        ?>
+          <h1 style="color: green; font-size:30px;margin-left: 320px ; ">Bạn chưa đăng ký môn học</h1>
+          <a href="dangkymonhoc.php"><img width="500px" height="200" src="image/ShowImage.png" style="margin-left: 245px"></a>
+        <?php 
+          exit();
+        }
+        ?>
+        <tr><td colspan="10" style="text-align: center; color: #177619;font-size: 30px;">Thông tin đăng ký của bạn</td></tr>
       <tr style="text-align: center; color: blue; font-weight: bold;">
         <td>STT</td>
         <td>Mã môn học</td>
         <td style="width: 290px">Tên môn học</td>
-        <td>Mã ngành</td>
+        <td>Phương thức giảng dạy</td>
+        <td>Lý thuyết</td>
+        <td>Bài tập</td>
+        <td>Thực hành</td>
+        <td>Đồ án</td>
+        <td>LATN</td>
         <td>Tín chỉ</td>
-        <td>Số tiết thực hành</td>
-        <td>Số tiết lý thuyết</td>
       </tr>
     <?php
     $i=1;
@@ -79,16 +92,16 @@ spl_autoload_register("loadClass");
           <td  style="text-align: center;"><?php echo $i?></td>
           <td><?php echo $row['mamh'] ?></td>
           <td style="width: 290px"><?php echo $row['tenmh'] ?></td>
-          <td><?php echo $row['manganh'] ?></td>
-          <td style="text-align: center;"><?php echo $row['tinchi'] ?></td>
-          <td style="text-align: center;"><?php echo $row['thuchanh'] ?></td>
+          <td style="text-align: center;"><?php echo $row['mapphoc'] ?></td>
           <td style="text-align: center;"><?php echo $row['lythuyet'] ?></td>
+          <td style="text-align: center;"><?php echo $row['baitap'] ?></td>
+          <td style="text-align: center;"><?php echo $row['thuchanh'] ?></td><td style="text-align: center;"><?php echo $row['doan'] ?></td><td style="text-align: center;"><?php echo $row['LATN'] ?></td><td style="text-align: center;"><?php echo $row['tinchi'] ?></td>
         </tr>
 <?php
   $i++;
   } 
 ?>
-<tr><td colspan="7" align="right"><a href="dangkymonhoc.php"><input type="button" name="chinhsua" value="Chỉnh sửa"></a></td></tr>
+<tr><td colspan="10" align="right"><a href="dangkymonhoc.php"><input type="button" name="chinhsua" value="Chỉnh sửa"></a></td></tr>
 </form>
 </table>
             </div>
@@ -96,9 +109,11 @@ spl_autoload_register("loadClass");
   </div>
   <!--Chân web -->
   <div id="footer">
-  <table align="center" style="padding-top:10px"><tr><td>
-  DESIGN by Nguyễn Thế Mạnh &amp; Vũ Tá Phương
-  </td></tr></table>
+  <table align="center" style="padding-top:10px">
+    <tr>
+      <td>DESIGN by Vũ Tá Phương &copy; 2018-<?php echo (date("Y")+1)?> </td>
+    </tr>
+  </table>
   </div>
          <?php
               ob_end_flush();

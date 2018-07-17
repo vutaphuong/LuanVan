@@ -12,7 +12,7 @@
     <link href="css/hover.css" rel="stylesheet" media="all">
      <link href="css/magic.css" rel="stylesheet">
      <link href="css/logoheader.css" rel="stylesheet">
-     <link href="css/formnv.css" rel="stylesheet">
+     <link href="css/dinhdangnut.css" rel="stylesheet">
      <!--<link href="css/Untitled-3.css" rel="stylesheet">-->
 
 <script language=JavaScript>
@@ -33,22 +33,25 @@
 
 </head>
 <body > 
-
     <?php
         $laymssv = $_GET["mssv"];
         $obj = new Db();
-        $row = $obj->select("select * from sinhvien where mssv = '$laymssv' ");        
+        $rowsv = $obj->select("select * from sinhvien where mssv = '$laymssv' ");        
         $rowskhoa=$obj->select('select tenkhoa from khoa');
-        $rowsnganh=$obj->select('select tennganh from nganh');    
-        $rowscvht=$obj->select('select hoten from giangvien');
-        foreach ($row as $row) 
+        $rowschitietsv=$obj->select("select * from chitietsv where mssv='$laymssv' ");
+        $rowslop=$obj->select("select tenlop from lop");
+        foreach ($rowsv as $item) 
         {
             # code...
-            $valuemssv = $row["mssv"];
-            $valueten = $row["hoten"];
-            $valuegt = $row["gt"];
-            $valuenoio = $row["noio"];
-            $valuequequan = $row["quequan"];
+            $valuemssv = $item["mssv"];
+            $valueten = $item["hoten"];
+        }
+        foreach ($rowschitietsv as $item1) {
+            $valuegt = $item1["gioitinh"];
+            $valuenoio = $item1["noio"];
+            $valuequequan = $item1["quequan"];
+            $valuengaysinh= $item1["ngaysinh"];
+            $valuengaynhaphoc= $item1["ngaynhaphoc"];
         }
     ?>
 
@@ -64,28 +67,36 @@
                 </tr>
                 <tr>
                 	<td class="nvnhap">MSSV</td>
-                    <td ><input class="vien" type="text" name="masv" placeholder="Nhập mã số sinh viên" size="50" maxlength="10" required value="<?php echo $valuemssv ?>" /></td>
+                    <td ><input readonly class="vien" type="text" name="masv" placeholder="Nhập mã số sinh viên" size="43" maxlength="10" required value="<?php echo $valuemssv ?>" /></td>
                 </tr>
                 <tr>
                 	<td class="nvnhap">Họ và tên</td>
-                    <td><input class="vien" type="text" name="hoten" placeholder="Nhập họ và tên sinh viên" size="50" required value="<?php echo $valueten ?>"/></td>
+                    <td><input class="vien" type="text" name="hoten" placeholder="Nhập họ và tên sinh viên" size="43" required value="<?php echo $valueten ?>"/></td>
+                </tr>
+                <tr>
+                  <td class="nvnhap">Ngày sinh</td>
+                    <td><input class="vien" type="date" name="ngaysinh" size="43" required value="<?php echo $valuengaysinh ?>"/></td>
+                </tr>
+                <tr>
+                  <td class="nvnhap">Ngày nhập học</td>
+                    <td><input class="vien" type="date" name="ngaynhaphoc" size="43" required value="<?php echo $valuengaynhaphoc; ?>"/></td>
                 </tr>
                 <tr>
                 	<td class="nvnhap">Giới tính</td>
-                    <td><input type="radio" name="gt" value="Nam" checked="checked" class="gt1" />Nam <input type="radio" name="gt" value="Nữ" class="gt1" />Nữ </td>
+                    <td><input type="radio" name="gt" value="Nam" class="gt1" checked="checked" />Nam <input type="radio" name="gt" value="Nữ" class="gt1" />Nữ </td>
+                </tr>
+                <tr>
+                  <td class="nvnhap">Quê quán</td>
+                     <td><input class="vien" type="text" name="quequan" placeholder="Nhập quê quán của sinh viên" size="43" required value="<?php echo $valuequequan ?>"/></td>
                 </tr>
                 <tr>
                 	<td class="nvnhap">Nơi ở</td>
-                    <td><input class="vien" type="text" name="noio" placeholder="Nhập nơi ở sinh viên" size="50" required value="<?php echo $valuenoio ?>"/></td>
-                </tr>
-                <tr>
-                	<td class="nvnhap">Quê quán</td>
-                     <td><input class="vien" type="text" name="quequan" placeholder="Nhập quê quán của sinh viên" size="50" required value="<?php echo $valuequequan ?>"/></td>
+                    <td><input class="vien" type="text" name="noio" placeholder="Nhập nơi ở sinh viên" size="43" required value="<?php echo $valuenoio ?>"/></td>
                 </tr>
                 <tr>
                     <td class="nvnhap">Khoa</td>
                      <td>
-                        <select name="tenkhoa" style="width: 330px;height: 30px">
+                        <select class="option" name="tenkhoa" style="width: 380px;height: 30px">
                           <?php 
                             foreach($rowskhoa as $khoa)
                             {
@@ -98,33 +109,19 @@
                      </td>
                 </tr>
                 <tr>
-                    <td class="nvnhap">Ngành</td>
+                    <td class="nvnhap">Lớp</td>
                         <td>
-                        <select name="tennganh" style="width: 330px;height: 30px">
+                        <select class="option" name="tenlop" style="width: 380px;height: 30px">
                         <?php 
-                        foreach($rowsnganh as $nganh)
+                        foreach($rowslop as $lop)
                         {
                        ?>
-                         <option><?php echo $nganh['tennganh']?></option>
+                         <option><?php echo $lop['tenlop']?></option>
                       <?php
                        }
                       ?>
                     </select> 
                      </td>  
-                </tr>
-                <tr>
-                    <td class="nvnhap">Cố vấn học tập</td>
-                     <td>
-                     <select name="tengv" style="width: 330px;height: 30px" required>
-                        <?php 
-                         foreach($rowscvht as $cvht)
-                        {
-                           ?>
-                             <option><?php echo $cvht['hoten']?></option>
-                          <?php
-                        }
-                          ?>
-                    </select></td>
                 </tr>
                 <tr>    
                     <td align="center" colspan="2"><input type="submit" name="sm" value="Lưu" class="gui" /></td>    

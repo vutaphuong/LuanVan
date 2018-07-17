@@ -4,7 +4,13 @@
 	  {
 	    session_start();
 	  }
-	include 'config/select.php';
+    if (isset($_SESSION['user'])) {
+  
+        $tennd=$_SESSION['user'];
+    }  
+    //include "config.php";
+    //include "config/config.php";
+    include "config/select.php";
 ?>
 <html>
 <head><meta http-equiv="content-type" content="text/html;charset=utf-8"/>
@@ -41,33 +47,13 @@
         {
             # code...
             
-            $m = $_POST["tendn"];  
-            $t = $_POST["password"];
-            $num_rowssv=dangnhap('sinhvien','mssv',$m,$t);
-            $num_rowsgv=dangnhap('giangvien','magv',$m,$t);
-            $num_rowsnv=dangnhap('nhanvien','manv',$m,$t);
-
-            if ($num_rowssv!=0 )
-            {
-                $_SESSION['user']=$_POST["tendn"];
-                header('Location: trangchu.php');                
-            }
-            if ($num_rowsnv!=0) 
-            {
-                $_SESSION['user']=$_POST["tendn"];
-                header('Location: quanlythongtin.php');                
-            }
-            if ($num_rowsgv!=0) 
-            {
-                $_SESSION['user']=$_POST["tendn"];
-                header('Location: xemlichday.php');                
-            }
-            else
-            {
-                $baoloi='Tên đăng nhập hoặc mật khẩu không đúng';
-            }
-
-                $valueten=$_POST['tendn'];
+            $username = $_POST["tendn"];  
+            $pass = $_POST["password"];
+            $num_rowssv=dangnhap('sinhvien','mssv',$username,$pass);
+            $num_rowsgv=dangnhap('giangvien','magv',$username,$pass);
+            $num_rowsnv=dangnhap('nhanvien','manv',$username,$pass);
+            //Kiểm tra tài khoản mật khẩu
+            $valueten=$_POST['tendn'];
             if ($_POST['tendn']=='') 
             {
                 $baoloiten='Tên đăng nhập không được bỏ trống';
@@ -92,6 +78,27 @@
             {
                 $baoloipw='';
             }
+
+            if ($num_rowssv!=0 )
+            {
+                $_SESSION['user']=$_POST["tendn"];
+                header('Location: trangchu.php');                
+            }
+            else if ($num_rowsgv!=0) 
+            {
+                $_SESSION['user']=$_POST["tendn"];
+                header('Location: xemlichday.php');                
+            }
+            else if ($num_rowsnv!=0) 
+            {
+                $_SESSION['user']=$_POST["tendn"];
+                header('Location: thongtinsvdkmh.php');                
+            }
+            else
+            {
+
+                $baoloi='Tên đăng nhập hoặc mật khẩu không đúng';
+            }
         }
         else
         {
@@ -107,6 +114,11 @@
         <form action="index.php" method="post">
                 <tr align="center">
                     <td colspan="9" class="inputdnphai ">
+                    <h1>Đăng nhập</h1>
+                    </td>
+                </tr> 
+                <tr align="center">
+                    <td colspan="9" class="inputdnphai ">
                     <input type="text" class="inputdn" placeholder="Tên đăng nhập" name="tendn" maxlength="10" value="<?php echo $valueten ?>">
                     </td>
                 </tr> 
@@ -120,9 +132,11 @@
                 <tr align="center"><td colspan="9" >
                     <input type="submit" class="inputdnphai sbm hvr-ripple-out" value="Đăng nhập" name="submit">
                 </td></tr>
+                <tr align="center"><td colspan="9" >
+                    <a href="change-pass-form.php">Quên mật khẩu?</a>
+                </td></tr>
                 <tr align="center"><td colspan="9" class="baoloi"><?php echo $baoloi; ?></td></tr>
-            </form>
-                
+            </form>      
             </table>
             
 </body>

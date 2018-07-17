@@ -1,6 +1,5 @@
-
 <?php
-  include "config/kiemtra_SESION.php";
+  ob_start();
 ?>
 <!doctype html>
 <html>
@@ -43,16 +42,13 @@
     <div id="noidung">    
     
     <div class="chucnangnv">
-        <p>Thông tin đăng ký</p>
+        <p><a href="thongtinsvdkmh.php">Thông tin đăng ký</a></p>
       </div>
       <div class="chucnangnv">
-        <p>Thông tin giáo viên</p>
+        <p><a href="#">Tạo lịch học</a></p>
       </div>
       <div class="chucnangnv">
-        <p>Tạo lịch học</p>
-      </div>
-      <div class="chucnangnv">
-        <p>Chỉnh sửa thông tin cá nhân</p>
+        <p><a href="thongtinnhanvienPDT.php">Chỉnh sửa thông tin cá nhân</a></p>
       </div>
       <div class="chucnangnv">
         <p><a href="themsinhvien.php">Chỉnh sửa thông tin Sinh viên</a></p>
@@ -63,7 +59,7 @@
   <!--Chân web -->
   <div id="footer">
   <table align="center"><tr><td>
-  DESIGN by Nguyễn Thế Mạnh &amp; Vũ Tá Phương
+  DESIGN by Vũ Tá Phương
   </td></tr></table>
   </div>
  <?php
